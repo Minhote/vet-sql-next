@@ -126,6 +126,10 @@ const config = {
         //   foreground: "hsl(var(--card-foreground))",
         // },
       },
+      boxShadow: {
+        header: `1px 1px 2px 1px hsl(var(--background-500)) inset,  
+          -1px 1px 0px 1px hsl(var(--background-500)) inset`,
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -140,11 +144,111 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "slow-to-down": {
+          "0%": {
+            transform: "translateY(0px)",
+          },
+          "80%, 100%": {
+            backgroundColor: "hsl(var(--background))",
+            boxShadow: "0px 0px 5px 0px hsl(var(--background-500)) inset",
+          },
+          "100%": {
+            transform: "translateY(15px)",
+            boxShadow: "0px 0px 5px 0px hsl(var(--background-500)) inset",
+          },
+        },
+        "slow-to-up": {
+          "0%": {
+            transform: "translateY(0px)",
+          },
+          "100%": {
+            transform: "translateY(-10px)",
+          },
+        },
+        "grow-since-center": {
+          "0%": {
+            height: "0",
+            width: "0",
+          },
+          "100%": {
+            height: "3rem",
+            width: "3.5rem",
+            transformOrigin: "top",
+            transitionDelay: "0.2s",
+          },
+        },
+        "hamburger-top-s": {
+          "0%": {
+            y: "25",
+          },
+          "40%": {
+            y: "45",
+          },
+          "100%": {
+            y: "45",
+            transform: "rotate(45deg)",
+          },
+        },
+        "hamburger-bottom-s": {
+          "0%": {
+            y: "65",
+          },
+          "40%": {
+            y: "45",
+          },
+          "100%": {
+            y: "45",
+            transform: "rotate(-45deg)",
+          },
+        },
+        "hamburger-top-e": {
+          "0%": {
+            y: "45",
+          },
+          "50%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            y: "25",
+          },
+        },
+        "hamburger-bottom-e": {
+          "0%": {
+            y: "45",
+          },
+          "50%": {
+            transform: "rotate(0deg)",
+          },
+          "100%": {
+            y: "65",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "slow-to-down": "slow-to-down 0.3s ease-in-out forwards",
+        "slow-to-up": "slow-to-up 0.3s forwards ease-in-out",
+        "grow-since-center": "grow-since-center 0.3s forwards ease-in-out",
+        "hamburger-top-s": "hamburger-top-s 0.7s forwards ease-in-out",
+        "hamburger-top-e": "hamburger-top-e 0.7s forwards ease-in",
+        "hamburger-bottom-s": "hamburger-bottom-s 0.7s forwards ease-in-out",
+        "hamburger-bottom-e": "hamburger-bottom-e 0.7s forwards ease-in",
       },
+      // transition: {
+      //   rect: {
+      //     DEFAULT: `
+      //   y 300ms ease-in 300ms,
+      //   rotate 300ms ease-in,
+      //   opacity 0ms 300ms
+      //   `,
+      //     expanded: `
+      // y 300ms ease-in 300ms,
+      // rotate 300ms ease-in,
+      // opacity 0ms 300ms
+      // `,
+      //   },
+      // },
     },
   },
   plugins: [require("tailwindcss-animate")],

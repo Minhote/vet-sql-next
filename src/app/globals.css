@@ -195,3 +195,14 @@
     --ring: 212.7 26.8% 83.9%;
   }
 }
+
+@layer components {
+  .transition-rect {
+    transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
+    transform-origin: center;
+  }
+  .transition-rect-expanded {
+    y: 45;
+    transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
+  }
+}
