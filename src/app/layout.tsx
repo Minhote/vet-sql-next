@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Header from "./components/Header";
 
 export const metadata: Metadata = {
   title: "My Vet App",
 };
+
+import { ThemeProvider } from "../app/components/ThemeProvider";
 
 export default function RootLayout({
   children,
@@ -12,8 +13,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="light">
-      <body className="bg-background">{children}</body>
-    </html>
+    <>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </body>
+      </html>
+    </>
   );
 }

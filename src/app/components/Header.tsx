@@ -1,19 +1,20 @@
 "use client";
 
-import { toggleHamburger } from "@/lib/utils";
+import { toggleHamburger } from "../../lib/utils";
 import Link from "next/link";
+import { ModeToggle } from "./ui/Toggle";
 
 export default function Header() {
   return (
-    <header className="bg-transparent overflow-hidden relative sm:p-4 sm:bg-primary ">
+    <header className="bg-transparent fixed inset-0 sm:h-20 sm:bg-primary sm:flex sm:items-center sm:justify-center sm:relative">
       <button
-        className="bg-transparent border-solid border-4 border-primary rounded-lg group peer absolute right-4 top-4 z-10 sm:hidden"
+        className="bg-transparent border-solid border-4 border-primary rounded-lg group peer fixed right-4 top-4 z-10 sm:hidden"
         aria-expanded="false"
         onClick={toggleHamburger}
       >
-        <svg viewBox="0 0 100 100" width={60} className="pointer-events-none">
+        <svg viewBox="0 0 100 100" width={50} className="pointer-events-none">
           <rect
-            className="transition-all duration-500 animate-hamburger-top-e origin-center group-aria-expanded:animate-hamburger-top-s"
+            className="fill-txt transition-all duration-500 animate-hamburger-top-e origin-center group-aria-expanded:animate-hamburger-top-s"
             width="80%"
             height={10}
             x={10}
@@ -21,7 +22,7 @@ export default function Header() {
             rx={5}
           ></rect>
           <rect
-            className="transition-all duration-500 transition-rect group-aria-expanded:transition-rect-expanded group-aria-expanded:opacity-0"
+            className="fill-txt transition-all duration-500 transition-rect group-aria-expanded:transition-rect-expanded group-aria-expanded:opacity-0 "
             width="80%"
             height={10}
             x={10}
@@ -29,7 +30,7 @@ export default function Header() {
             rx={5}
           ></rect>
           <rect
-            className="transition-all  duration-500 animate-hamburger-bottom-e origin-center group-aria-expanded:animate-hamburger-bottom-s"
+            className="fill-txt transition-all  duration-500 animate-hamburger-bottom-e origin-center group-aria-expanded:animate-hamburger-bottom-s"
             width="80%"
             height={10}
             x={10}
@@ -38,7 +39,7 @@ export default function Header() {
           ></rect>
         </svg>
       </button>
-      <ul className="flex flex-col transition-transform duration-500 justify-center items-center gap-10 peer-aria-expanded:translate-x-0 bg-primary p-6 h-dvh sm:flex-row sm:h-auto max-sm:translate-x-[120%]">
+      <ul className="flex flex-col transition-all  duration-500 justify-center items-center gap-10 peer-aria-expanded:w-full  peer-aria-expanded:right-0 peer-aria-expanded:opacity-100 bg-primary p-4 h-dvh sm:flex-row sm:h-20 max-sm:w-0 max-sm:opacity-0 max-sm:right-5 max-sm:absolute">
         <li className="text-txt relative group">
           <Link
             href="/"
@@ -158,6 +159,9 @@ export default function Header() {
           </Link>
         </li>
       </ul>
+      <div className="sm:absolute sm:top-5 sm:right-5 fixed bottom-5 right-5">
+        <ModeToggle />
+      </div>
     </header>
   );
 }
