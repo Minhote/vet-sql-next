@@ -1,14 +1,14 @@
 "use client";
 
-import { toggleHamburger } from "../../lib/utils";
 import Link from "next/link";
-import { ModeToggle } from "./ui/Toggle";
+import { toggleHamburger } from "../../lib/utils";
+import { ModeToggle } from "./ui/toggle";
 
 export default function Header() {
   return (
-    <header className="bg-transparent fixed inset-0 sm:h-20 sm:bg-primary sm:flex sm:items-center sm:justify-center sm:relative">
+    <header className="bg-transparent fixed inset-0 sm:h-20 sm:bg-primary sm:flex sm:items-center sm:justify-center sm:relative header">
       <button
-        className="bg-transparent border-solid border-4 border-primary rounded-lg group peer fixed right-4 top-4 z-10 sm:hidden"
+        className="bg-transparent border-solid border-accent border-4 rounded-lg group peer fixed right-4 top-4 z-10 sm:hidden"
         aria-expanded="false"
         onClick={toggleHamburger}
       >

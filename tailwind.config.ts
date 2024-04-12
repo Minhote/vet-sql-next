@@ -10,6 +10,23 @@ const config = {
   ],
   prefix: "",
   theme: {
+    fontSize: {
+      sm: "0.750rem",
+      base: "1rem",
+      xl: "1.333rem",
+      "2xl": "1.777rem",
+      "3xl": "2.369rem",
+      "4xl": "3.158rem",
+      "5xl": "4.210rem",
+    },
+    fontFamily: {
+      heading: "Poppins",
+      body: "Kanit",
+    },
+    fontWeight: {
+      normal: "400",
+      bold: "700",
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -235,20 +252,16 @@ const config = {
         "hamburger-bottom-s": "hamburger-bottom-s 0.7s forwards ease-in-out",
         "hamburger-bottom-e": "hamburger-bottom-e 0.7s forwards ease-in",
       },
-      // transition: {
-      //   rect: {
-      //     DEFAULT: `
-      //   y 300ms ease-in 300ms,
-      //   rotate 300ms ease-in,
-      //   opacity 0ms 300ms
-      //   `,
-      //     expanded: `
-      // y 300ms ease-in 300ms,
-      // rotate 300ms ease-in,
-      // opacity 0ms 300ms
-      // `,
-      //   },
-      // },
+      gridTemplateColumns: {
+        about: "repeat(6, 100px)",
+        "about-sm": "repeat(4, 100px)",
+      },
+      gridTemplateRows: {
+        about: "repeat(4, 100px)",
+      },
+      gridColumn: {
+        n: "auto / span 2",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
