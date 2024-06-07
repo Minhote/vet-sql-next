@@ -1,0 +1,10 @@
+import RegisterCard from "../components/RegisterCard";
+
+export default function UserPage() {
+  return (
+    <main className="container">
+      <h2 className="title">Create your account and book an appointment</h2>
+      <RegisterCard type="login" />
+    </main>
+  );
+}

@@ -41,7 +41,7 @@ export default function Pricing() {
 
   return (
     <>
-      <h2 className="font-heading text-txt font-bold text-3xl">Pricing</h2>
+      <h2 className="title">Pricing</h2>
       <Card className="min-w-80 max-w-96">
         <CardHeader>
           <CardTitle className="text-2xl">All of our services</CardTitle>

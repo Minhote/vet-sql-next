@@ -27,13 +27,13 @@ const config = {
       normal: "400",
       bold: "700",
     },
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
+    // container: {
+    //   center: true,
+    //   padding: "2rem",
+    //   screens: {
+    //     "2xl": "1400px",
+    //   },
+    // },
     extend: {
       colors: {
         txt: {
@@ -261,6 +261,9 @@ const config = {
       },
       gridColumn: {
         n: "auto / span 2",
+      },
+      backgroundImage: {
+        footprint: "url('./assets/footprint.svg')",
       },
     },
   },

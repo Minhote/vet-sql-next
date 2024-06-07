@@ -11,9 +11,7 @@ export default function Info() {
   return (
     <>
       <div className="flex flex-col flex-wrap justify-around items-center self-stretch">
-        <h2 className="font-heading text-3xl text-txt font-bold">
-          Information
-        </h2>
+        <h2 className="title">Information</h2>
         <div className="flex flex-wrap justify-around items-center w-4/5 my-10 gap-5">
           <Card className="flex-initial w-40">
             <CardHeader>

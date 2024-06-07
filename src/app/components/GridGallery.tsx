@@ -14,7 +14,7 @@ export default function GridGallery() {
       <Image
         src={img1}
         width={200}
-        height={20}
+        height={200}
         alt="Imagen 1"
         className="size-full object-fill col-start-1 col-end-3 row-start-1 row-end-3 transition-all duration-500 clip-path-r hover:clip-path-s hover:z-10"
       />

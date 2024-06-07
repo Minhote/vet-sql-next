@@ -6,15 +6,15 @@ import { ModeToggle } from "./ui/toggle";
 
 export default function Header() {
   return (
-    <header className="bg-transparent fixed inset-0 sm:h-20 sm:bg-primary sm:flex sm:items-center sm:justify-center sm:relative header">
+    <header className="header fixed inset-0 bg-transparent sm:relative sm:flex sm:h-20 sm:items-center sm:justify-center sm:bg-primary">
       <button
-        className="bg-transparent border-solid border-accent border-4 rounded-lg group peer fixed right-4 top-4 z-10 sm:hidden"
+        className="group peer fixed right-4 top-4 z-10 rounded-lg border-4 border-solid border-accent bg-transparent sm:hidden"
         aria-expanded="false"
         onClick={toggleHamburger}
       >
         <svg viewBox="0 0 100 100" width={50} className="pointer-events-none">
           <rect
-            className="fill-txt transition-all duration-500 animate-hamburger-top-e origin-center group-aria-expanded:animate-hamburger-top-s"
+            className="origin-center animate-hamburger-top-e fill-txt transition-all duration-500 group-aria-expanded:animate-hamburger-top-s"
             width="80%"
             height={10}
             x={10}
@@ -22,7 +22,7 @@ export default function Header() {
             rx={5}
           ></rect>
           <rect
-            className="fill-txt transition-all duration-500 transition-rect group-aria-expanded:transition-rect-expanded group-aria-expanded:opacity-0 "
+            className="transition-rect group-aria-expanded:transition-rect-expanded fill-txt transition-all duration-500 group-aria-expanded:opacity-0 "
             width="80%"
             height={10}
             x={10}
@@ -30,7 +30,7 @@ export default function Header() {
             rx={5}
           ></rect>
           <rect
-            className="fill-txt transition-all  duration-500 animate-hamburger-bottom-e origin-center group-aria-expanded:animate-hamburger-bottom-s"
+            className="origin-center animate-hamburger-bottom-e  fill-txt transition-all duration-500 group-aria-expanded:animate-hamburger-bottom-s"
             width="80%"
             height={10}
             x={10}
@@ -39,38 +39,39 @@ export default function Header() {
           ></rect>
         </svg>
       </button>
-      <ul className="flex flex-col transition-all  duration-500 justify-center items-center gap-10 peer-aria-expanded:w-full  peer-aria-expanded:right-0 peer-aria-expanded:opacity-100 bg-primary p-4 h-dvh sm:flex-row sm:h-20 max-sm:w-0 max-sm:opacity-0 max-sm:right-5 max-sm:absolute">
-        <li className="text-txt relative group">
+      <ul className="flex h-dvh flex-col  items-center justify-center gap-10 bg-primary p-4  transition-all duration-500 peer-aria-expanded:right-0 peer-aria-expanded:w-full peer-aria-expanded:opacity-100 max-sm:absolute max-sm:right-5 max-sm:w-0 max-sm:opacity-0 sm:h-20 sm:flex-row">
+        <li className="group relative text-txt">
           <Link
+            prefetch
             href="/"
-            className="flex flex-col items-center transition-all duration-300 before:transition before:h-12 before:w-14 before:opacity-0 before:absolute before:bg-background before:-top-[20px] before:rounded-b-md before:origin-center before:group-hover:origin-top before:group-hover:opacity-100"
+            className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
-              className="w-6 h-6 fill-txt z-10 transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
+              className="z-10 h-6 w-6 fill-txt transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
             >
               <path d="M11.47 3.841a.75.75 0 0 1 1.06 0l8.69 8.69a.75.75 0 1 0 1.06-1.061l-8.689-8.69a2.25 2.25 0 0 0-3.182 0l-8.69 8.69a.75.75 0 1 0 1.061 1.06l8.69-8.689Z" />
               <path d="m12 5.432 8.159 8.159c.03.03.06.058.091.086v6.198c0 1.035-.84 1.875-1.875 1.875H15a.75.75 0 0 1-.75-.75v-4.5a.75.75 0 0 0-.75-.75h-3a.75.75 0 0 0-.75.75V21a.75.75 0 0 1-.75.75H5.625a1.875 1.875 0 0 1-1.875-1.875v-6.198a2.29 2.29 0 0 0 .091-.086L12 5.432Z" />
             </svg>
             <span
-              className="relative inline-block w-full bg-transparent group-hover:translate-y-4 group-hover:text-primary  shadow-none group-hover:bg-background rounded-b-none  rounded-t px-2 
-              group-hover:shadow-header transition-all  duration-300"
+              className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
+              group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
               Home
             </span>
           </Link>
         </li>
-        <li className="text-txt relative group">
+        <li className="group relative text-txt">
           <Link
             href="/services"
-            className="flex flex-col items-center transition-all duration-300 before:transition before:h-12 before:w-14 before:opacity-0 before:absolute before:bg-background before:-top-[20px] before:rounded-b-md before:origin-center before:group-hover:origin-top before:group-hover:opacity-100"
+            className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-6 h-6 fill-txt z-10 transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
+              className="z-10 h-6 w-6 fill-txt transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
             >
               <path
                 fillRule="evenodd"
@@ -79,23 +80,23 @@ export default function Header() {
               />
             </svg>
             <span
-              className="relative inline-block w-full bg-transparent group-hover:translate-y-4 group-hover:text-primary  shadow-none group-hover:bg-background rounded-b-none  rounded-t px-2 
-              group-hover:shadow-header transition-all  duration-300"
+              className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
+              group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
               Services
             </span>
           </Link>
         </li>
-        <li className="text-txt relative group">
+        <li className="group relative text-txt">
           <Link
             href="/pricing"
-            className="flex flex-col items-center transition-all duration-300 before:transition before:h-12 before:w-14 before:opacity-0 before:absolute before:bg-background before:-top-[20px] before:rounded-b-md before:origin-center before:group-hover:origin-top before:group-hover:opacity-100"
+            className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-6 h-6 fill-txt z-10 transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
+              className="z-10 h-6 w-6 fill-txt transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
             >
               <path d="M10.464 8.746c.227-.18.497-.311.786-.394v2.795a2.252 2.252 0 0 1-.786-.393c-.394-.313-.546-.681-.546-1.004 0-.323.152-.691.546-1.004ZM12.75 15.662v-2.824c.347.085.664.228.921.421.427.32.579.686.579.991 0 .305-.152.671-.579.991a2.534 2.534 0 0 1-.921.42Z" />
               <path
@@ -105,44 +106,44 @@ export default function Header() {
               />
             </svg>
             <span
-              className="relative inline-block w-full bg-transparent group-hover:translate-y-4 group-hover:text-primary  shadow-none group-hover:bg-background rounded-b-none  rounded-t px-2 
-              group-hover:shadow-header transition-all  duration-300"
+              className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
+              group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
               Pricing
             </span>
           </Link>
         </li>
-        <li className="text-txt relative group">
+        <li className="group relative text-txt">
           <Link
             href="/about"
-            className="flex flex-col items-center transition-all duration-300 before:transition before:h-12 before:w-14 before:opacity-0 before:absolute before:bg-background before:-top-[20px] before:rounded-b-md before:origin-center before:group-hover:origin-top before:group-hover:opacity-100"
+            className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-6 h-6 fill-txt z-10 transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
+              className="z-10 h-6 w-6 fill-txt transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
             >
               <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
             </svg>
             <span
-              className="relative inline-block w-full bg-transparent group-hover:translate-y-4 group-hover:text-primary  shadow-none group-hover:bg-background rounded-b-none  rounded-t px-2 
-              group-hover:shadow-header transition-all  duration-300"
+              className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
+              group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
               About
             </span>
           </Link>
         </li>
-        <li className="text-txt relative group">
+        <li className="group relative text-txt">
           <Link
             href="/user"
-            className="flex flex-col items-center transition-all duration-300 before:transition before:h-12 before:w-14 before:opacity-0 before:absolute before:bg-background before:-top-[20px] before:rounded-b-md before:origin-center before:group-hover:origin-top before:group-hover:opacity-100"
+            className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-6 h-6 fill-txt z-10 transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
+              className="z-10 h-6 w-6 fill-txt transition duration-300 group-hover:-translate-y-2 group-hover:fill-primary"
             >
               <path
                 fillRule="evenodd"
@@ -151,15 +152,15 @@ export default function Header() {
               />
             </svg>
             <span
-              className="relative inline-block w-full bg-transparent group-hover:translate-y-4 group-hover:text-primary  shadow-none group-hover:bg-background rounded-b-none  rounded-t px-2 
-              group-hover:shadow-header transition-all  duration-300"
+              className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
+              group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
               User
             </span>
           </Link>
         </li>
       </ul>
-      <div className="sm:absolute sm:top-5 sm:right-5 fixed bottom-5 right-5">
+      <div className="fixed bottom-5 right-5 sm:absolute sm:right-5 sm:top-5">
         <ModeToggle />
       </div>
     </header>

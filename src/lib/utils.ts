@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function toggleHamburger(
-  e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
 ) {
   const button = e.target as HTMLButtonElement;
   const currentState = button.getAttribute("data-state");

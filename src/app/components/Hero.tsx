@@ -3,7 +3,7 @@ import { Ilu } from "../assets/Ilu";
 export default function Hero() {
   return (
     <>
-      <h1 className="text-txt font-heading font-bold text-2xl sm:text-5xl">
+      <h1 className="text-txt font-heading font-bold text-2xl tracking-wider sm:text-5xl">
         MY VET APP
       </h1>
       <div className="flex justify-center items-center gap-5 p-7 self-stretch flex-wrap px-10 md:px-20">

@@ -9,7 +9,7 @@ import {
 export default function About() {
   return (
     <>
-      <h2 className="font-heading text-3xl text-txt font-bold">About</h2>
+      <h2 className="title">About</h2>
       <GridGallery />
       <Accordion type="single" collapsible className="min-w-96">
         <AccordionItem value="item-1">

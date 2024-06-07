@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
 @layer base {
   :root {
     --text: 139 61% 6%;
@@ -146,9 +159,7 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
-}
 
-@layer components {
   .transition-rect {
     transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
     transform-origin: center;
@@ -173,6 +184,31 @@
       filter: brightness(0.8) contrast(0.7);
     }
   }
+}
+
+@layer components {
+  .container {
+    @apply flex flex-col items-center justify-between p-5 gap-10 mx-auto;
+  }
+
+  .title {
+    @apply font-bold font-heading text-txt text-4xl tracking-wider my-5;
+  }
+
+  .item-services {
+    &:not(.subitem) {
+      @apply flex items-center justify-start gap-2 text-xl before:bg-footprint before:bg-no-repeat before:inline-block before:fill-primary before:size-9 before:bg-center;
+    }
+    &.subitem {
+      @apply flex flex-col text-xl;
+    }
+    &.subitem > p {
+      @apply flex items-center gap-2 before:bg-footprint before:bg-no-repeat before:inline-block before:fill-primary before:size-9 before:bg-center;
+    }
+    &.subitem > ul {
+      @apply flex flex-col ml-8;
+    }
+  }
 
   @media (max-width: 640px) {
     .header {
@@ -188,15 +224,6 @@
           z-index: 10;
         }
       }
-      /* &:has(button[aria-expanded="false"]) ul {
-        z-index: -1;
-        pointer-events: none;
-      } */
-
-      /* &:has(button[aria-expanded="false"]) button {
-        z-index: 10;
-      } */
-
       &:has(button[aria-expanded="true"]) {
         ul {
           pointer-events: all;
@@ -207,11 +234,6 @@
           z-index: -10;
         }
       }
-
-      /* &:has(button[aria-expanded="true"]) + main {
-        position: relative;
-        z-index: -10;
-      } */
     }
   }
 }

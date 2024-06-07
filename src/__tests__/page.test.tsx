@@ -24,4 +24,8 @@ describe("Page Testing", () => {
       screen.getByRole("heading", { level: 2, name: "Information" })
     ).toBeDefined();
   });
+
+  it("Page must have a footer section", () => {
+    expect(screen.getByRole("contentinfo")).toBeDefined();
+  });
 });
