@@ -1,21 +1,25 @@
 import type { Metadata } from "next";
-import "./globals.css";
-
-// export const runtime = "edge";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "My Vet App",
 };
 
-import { ThemeProvider } from "../app/components/ThemeProvider";
-import Header from "./components/Header";
-import { Toaster } from "./components/ui/sonner";
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
+import { getSession } from "@/lib/user_utils";
+import { toast } from "sonner";
+import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await getSession();
+  if (!session) redirect("/login");
+
   return (
     <>
       <html lang="en" suppressHydrationWarning>
@@ -29,10 +33,6 @@ export default function RootLayout({
           >
             <Toaster richColors position="top-right" />
             {children}
-
-            <footer className="self-stretch bg-primary text-txt">
-              Pie de página
-            </footer>
           </ThemeProvider>
         </body>
       </html>

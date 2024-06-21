@@ -136,7 +136,7 @@ export default function Header() {
         </li>
         <li className="group relative text-txt">
           <Link
-            href="/user"
+            href="/login"
             className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
           >
             <svg
@@ -155,7 +155,7 @@ export default function Header() {
               className="relative inline-block w-full rounded-b-none rounded-t bg-transparent  px-2 shadow-none transition-all  duration-300 group-hover:translate-y-4 
               group-hover:bg-background group-hover:text-primary  group-hover:shadow-header"
             >
-              User
+              Login
             </span>
           </Link>
         </li>

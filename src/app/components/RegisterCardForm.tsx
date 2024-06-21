@@ -21,13 +21,14 @@ import {
   submitSchema,
 } from "@/lib/form_utils";
 import { RegisterCardProps } from "../database";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const RegisterCardForm = ({ type }: RegisterCardProps) => {
+  const router = useRouter();
   if (type === "submit") {
     const submitform = useForm<submitSchema>({
       resolver: zodResolver(formSchema),
-      defaultValues: { username: "", password: "", identification_number: "" },
+      defaultValues: { username: "", password: "", id: "" },
     });
 
     async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -39,6 +40,7 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
       const data = await resp.json();
       if (status === "Created") {
         toast.info(`${data.message}`);
+        submitform.reset();
       } else if (status === "Conflict") {
         toast.error(`${data.message}`);
       }
@@ -96,7 +98,7 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
           />
           <FormField
             control={submitform.control}
-            name="identification_number"
+            name="id"
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-xl font-bold text-txt">
@@ -142,10 +144,10 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
       });
       const status = resp.statusText;
       const data = await resp.json();
-      console.log(data, status);
       if (status === "OK") {
         toast.info(`${data.message}`);
-        redirect(`/user/${data.user.identification_number}`);
+        loginform.reset();
+        router.push(`/user/${data.user.id}`);
       } else {
         toast.error(`${data.message}`);
       }

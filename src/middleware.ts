@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SignJWT, jwtVerify } from "jose";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export const alg = process.env.JWTALG as string;
 export const secretKEy = process.env.JWTSECRETKEY as string;
@@ -37,7 +38,6 @@ export async function middleware(req: NextRequest) {
     httpOnly: true,
     expires: parsed.expires,
   });
-
   return res;
 }
 

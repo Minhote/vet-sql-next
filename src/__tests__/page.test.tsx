@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import Home from "../app/page";
+import Home from "../app/(without-auth)/page";
 
 // test("Primer Unit Test", () => {
 //   render(<Home />);
@@ -21,7 +21,7 @@ describe("Page Testing", () => {
 
   it("Page must have a section of cards", () => {
     expect(
-      screen.getByRole("heading", { level: 2, name: "Information" })
+      screen.getByRole("heading", { level: 2, name: "Information" }),
     ).toBeDefined();
   });
 

@@ -1,69 +1,69 @@
-import RegisterCard from "../components/RegisterCard";
+import RegisterCard from "../../components/RegisterCard";
 
 export default function PricingPage() {
   return (
     <main className="container">
       <h2 className="title">Pricing</h2>
-      <div className="self-stretch  grid place-content-center grid-cols-[repeat(auto-fill,minmax(min(100px,100%),1fr))] auto-rows-[100px] gap-5 grid-flow-dense">
-        <div className="col-span-2 lg:col-span-3 bg-secondary-500 dark:bg-secondary rounded-md text-txt flex flex-col items-center justify-center">
-          <h3 className="font-bold text-2xl">Consult</h3>
-          <span className="text-background text-xl font-bold">$ 10</span>
+      <div className="grid  grid-flow-dense auto-rows-[100px] grid-cols-[repeat(auto-fill,minmax(min(100px,100%),1fr))] place-content-center gap-5 self-stretch">
+        <div className="col-span-2 flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt lg:col-span-3 dark:bg-secondary">
+          <h3 className="text-2xl font-bold">Consult</h3>
+          <span className="text-xl font-bold text-background">$ 10</span>
         </div>
-        <div className="col-span-2  lg:col-span-3 bg-secondary-500 dark:bg-secondary rounded-md text-txt flex flex-col items-center justify-center col-start-2 sm:col-start-auto">
-          <h3 className="font-bold text-2xl">Deworming</h3>
-          <span className="text-background text-xl font-bold">$ 20</span>
+        <div className="col-span-2  col-start-2 flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt sm:col-start-auto lg:col-span-3 dark:bg-secondary">
+          <h3 className="text-2xl font-bold">Deworming</h3>
+          <span className="text-xl font-bold text-background">$ 20</span>
         </div>
-        <div className="col-span-2  lg:col-span-3 bg-secondary-500 dark:bg-secondary rounded-md text-txt flex flex-col items-center justify-center">
-          <h3 className="font-bold text-2xl">Styling</h3>
-          <span className="text-background text-xl font-bold">$ 20</span>
+        <div className="col-span-2  flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt lg:col-span-3 dark:bg-secondary">
+          <h3 className="text-2xl font-bold">Styling</h3>
+          <span className="text-xl font-bold text-background">$ 20</span>
         </div>
-        <div className="col-span-3 max-sm:col-span-full md:col-span-2 lg:col-span-5 row-span-2  bg-secondary-500 dark:bg-secondary rounded-md text-txt flex flex-col justify-center items-center">
-          <h3 className="font-bold text-2xl">Training</h3>
-          <ul className="flex flex-wrap self-stretch justify-around items-center">
+        <div className="col-span-3 row-span-2 flex flex-col items-center  justify-center rounded-md bg-secondary-500 text-txt max-sm:col-span-full md:col-span-2 lg:col-span-5 dark:bg-secondary">
+          <h3 className="text-2xl font-bold">Training</h3>
+          <ul className="flex flex-wrap items-center justify-around self-stretch">
             <li className="text-center">
-              <p className="font-bold text-xl">Dog</p>
-              <span className="text-background text-xl font-bold">$ 20</span>
+              <p className="text-xl font-bold">Dog</p>
+              <span className="text-xl font-bold text-background">$ 20</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Cat</p>
-              <span className="text-background text-xl font-bold">$ 40</span>
+              <p className="text-xl font-bold">Cat</p>
+              <span className="text-xl font-bold text-background">$ 40</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Equine</p>
-              <span className="text-background text-xl font-bold">$ 100</span>
+              <p className="text-xl font-bold">Equine</p>
+              <span className="text-xl font-bold text-background">$ 100</span>
             </li>
           </ul>
         </div>
-        <div className="col-span-3 max-sm:col-span-full sm:col-span-full lg:col-start-2 lg:col-span-6 xl:col-start-6 xl:col-span-5 md:col-span-4 row-span-3 sm:row-span-2 flex items-center justify-between gap-2 bg-secondary-500 dark:bg-secondary rounded-md text-txt p-2">
-          <h3 className="font-bold text-2xl">Surgery</h3>
-          <ul className="flex self-stretch justify-evenly items-center flex-wrap gap-2">
+        <div className="col-span-3 row-span-3 flex items-center justify-between gap-2 rounded-md bg-secondary-500 p-2 text-txt max-sm:col-span-full sm:col-span-full sm:row-span-2 md:col-span-4 lg:col-span-6 lg:col-start-2 xl:col-span-5 xl:col-start-6 dark:bg-secondary">
+          <h3 className="text-2xl font-bold">Surgery</h3>
+          <ul className="flex flex-wrap items-center justify-evenly gap-2 self-stretch">
             <li className="text-center">
-              <p className="font-bold text-xl">General</p>
-              <span className="text-background text-xl font-bold">$ 30</span>
+              <p className="text-xl font-bold">General</p>
+              <span className="text-xl font-bold text-background">$ 30</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Ortopedic</p>
-              <span className="text-background text-xl font-bold">$ 50</span>
+              <p className="text-xl font-bold">Ortopedic</p>
+              <span className="text-xl font-bold text-background">$ 50</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Soft-Tissue</p>
-              <span className="text-background text-xl font-bold">$ 80</span>
+              <p className="text-xl font-bold">Soft-Tissue</p>
+              <span className="text-xl font-bold text-background">$ 80</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Dental</p>
-              <span className="text-background text-xl font-bold">$ 30</span>
+              <p className="text-xl font-bold">Dental</p>
+              <span className="text-xl font-bold text-background">$ 30</span>
             </li>
             <li className="text-center">
-              <p className="font-bold text-xl">Emergency</p>
-              <span className="text-background text-xl font-bold">$ 60</span>
+              <p className="text-xl font-bold">Emergency</p>
+              <span className="text-xl font-bold text-background">$ 60</span>
             </li>
           </ul>
         </div>
       </div>
       <div className="lg:w-3/4">
-        <div className="flex flex-col gap-4 my-6">
-          <h3 className="font-bold text-primary text-2xl">Consult</h3>
-          <p className="font-normal text-txt text-xl">
+        <div className="my-6 flex flex-col gap-4">
+          <h3 className="text-2xl font-bold text-primary">Consult</h3>
+          <p className="text-xl font-normal text-txt">
             At our veterinary practice, we are committed to providing the best
             medical care for your pet. best medical care for your pet. Our team
             of highly qualified veterinarians veterinarians are dedicated to
@@ -80,9 +80,9 @@ export default function PricingPage() {
             dedication!
           </p>
         </div>
-        <div className="flex flex-col gap-4 my-6">
-          <h3 className="font-bold text-primary text-2xl ">Deworming</h3>
-          <p className="font-normal text-txt text-xl">
+        <div className="my-6 flex flex-col gap-4">
+          <h3 className="text-2xl font-bold text-primary ">Deworming</h3>
+          <p className="text-xl font-normal text-txt">
             Our deworming service is essential to ensure the continued health
             and well-being of your pet. We know how important it is to protect
             your furry friend against internal and external parasites that can
@@ -98,9 +98,9 @@ export default function PricingPage() {
             parasites and give him or her a long and healthy life.
           </p>
         </div>
-        <div className="flex flex-col gap-4 my-6">
-          <h3 className="font-bold text-primary text-2xl ">Styling</h3>
-          <p className="font-normal text-txt text-xl">
+        <div className="my-6 flex flex-col gap-4">
+          <h3 className="text-2xl font-bold text-primary ">Styling</h3>
+          <p className="text-xl font-normal text-txt">
             Our veterinary stylist service offers much more than just haircuts
             for your pet. Our stylists are trained professionals who understand
             the specific needs of each coat type and breed. We work to make your
@@ -115,9 +115,9 @@ export default function PricingPage() {
             high-quality grooming experience.
           </p>
         </div>
-        <div className="flex flex-col gap-4 my-6">
-          <h3 className="font-bold text-primary text-2xl ">Training</h3>
-          <p className="font-normal text-txt text-xl">
+        <div className="my-6 flex flex-col gap-4">
+          <h3 className="text-2xl font-bold text-primary ">Training</h3>
+          <p className="text-xl font-normal text-txt">
             Our pet training service is designed to help you strengthen your
             bond with your furry companion and ensure proper behavior in a
             variety of situations. Our trainers are experts in animal behavior
@@ -135,38 +135,38 @@ export default function PricingPage() {
             keep your pet happy, healthy and well-mannered.
           </p>
         </div>
-        <div className="flex flex-col gap-4 my-6">
-          <h3 className="font-bold text-primary text-2xl">Surgery</h3>
-          <p className="font-normal text-txt text-xl">
+        <div className="my-6 flex flex-col gap-4">
+          <h3 className="text-2xl font-bold text-primary">Surgery</h3>
+          <p className="text-xl font-normal text-txt">
             Our veterinary center specializes in a variety of veterinary
             surgeries to address the specific medical needs of your pets:
           </p>
           <ul className="flex flex-col gap-4">
             <li className="item-services flex-wrap">
-              <span className="text-primary text-2xl font-bold inline-block">
+              <span className="inline-block text-2xl font-bold text-primary">
                 General Surgery:
               </span>
-              <p className="font-normal text-txt text-xl">
+              <p className="text-xl font-normal text-txt">
                 We perform routine surgical procedures, such as spaying and
                 neutering, removal of benign tumors, correction of hernias, and
                 repair of lacerations.
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="text-primary text-2xl font-bold inline-block">
+              <span className="inline-block text-2xl font-bold text-primary">
                 Orthopedic Surgery:
               </span>
-              <p className="font-normal text-txt text-xl">
+              <p className="text-xl font-normal text-txt">
                 Our orthopedic veterinarians are trained to treat
                 musculoskeletal injuries and conditions, such as bone fractures,
                 joint luxations, hip dysplasia and cruciate ligament injuries.
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="text-primary text-2xl font-bold inline-block">
+              <span className="inline-block text-2xl font-bold text-primary">
                 Soft Tissue Surgery:
               </span>
-              <p className="font-normal text-txt text-xl">
+              <p className="text-xl font-normal text-txt">
                 This specialty focuses on surgical interventions on internal
                 organs and non-bony structures. We perform abdominal, thoracic
                 and urogenital surgeries, such as removal of masses, correction
@@ -174,20 +174,20 @@ export default function PricingPage() {
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="text-primary text-2xl font-bold inline-block">
+              <span className="inline-block text-2xl font-bold text-primary">
                 Dental Surgery:
               </span>
-              <p className="font-normal text-txt text-xl">
+              <p className="text-xl font-normal text-txt">
                 Our dental procedures include dental cleanings, extractions of
                 damaged or infected teeth, treatment of periodontal disease and
                 correction of malocclusions.
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="text-primary text-2xl font-bold inline-block">
+              <span className="inline-block text-2xl font-bold text-primary">
                 Emergency Surgery:
               </span>
-              <p className="font-normal text-txt text-xl">
+              <p className="text-xl font-normal text-txt">
                 We are available 24 hours a day to provide emergency surgical
                 care in cases of severe trauma, intestinal obstructions, gastric
                 torsion, among others.

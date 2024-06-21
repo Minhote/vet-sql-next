@@ -1,4 +1,10 @@
-import { RegisterFormData, UserData, loginData } from "@/app/database";
+import {
+  RegisterFormData,
+  UserData,
+  customerResponse,
+  getSessionResponse,
+  loginData,
+} from "@/app/database";
 import { connection } from "@/app/database/config";
 import { genSalt, hash, compare } from "bcryptjs";
 import { cookies } from "next/headers";
@@ -21,18 +27,18 @@ export async function comparePassword(
 }
 
 export async function register(formData: RegisterFormData) {
-  const { identification_number, password, username } = formData;
+  const { id, password, username } = formData;
   const hashedPassword = await hashingPassword(password);
   const [data] = await connection.execute<UserData[]>(
-    `SELECT * FROM mydb.customer WHERE identification_number = ? `,
-    [identification_number],
+    `SELECT * FROM mydb.customer WHERE id = ? `,
+    [id],
   );
-  console.log(data);
+
   if (data.length === 0) {
     await connection.query<UserData[]>(
-      `INSERT INTO mydb.customer (name, identification_number, password)
+      `INSERT INTO mydb.customer (name, id, password)
     VALUES (?,?,?)`,
-      [username, identification_number, hashedPassword],
+      [username, id, hashedPassword],
     );
     return true;
   }
@@ -57,7 +63,7 @@ export async function login(formData: loginData) {
   // Autenticación si las credenciales son correctas
   const userToSession = {
     username: user[0].name,
-    identification_number: user[0].identification_number,
+    id: user[0].id,
   };
 
   const expires = new Date(Date.now() + thirtyMinutes);
@@ -71,11 +77,70 @@ export async function logout() {
   cookies().set("session", "", { expires: new Date(0) });
 }
 
-export async function getSession() {
+export async function getSession(): Promise<getSessionResponse | null> {
   const session = cookies().get("session");
-  console.log(session);
   if (session) {
     return decrypt(session.value);
   }
   return null;
+}
+
+export async function getInformationById(id: string) {
+  try {
+    const [customerData] = await connection.execute<customerResponse[]>(
+      `SELECT 
+    c.name AS customer_name,
+    (
+        SELECT 
+            JSON_ARRAYAGG(
+                JSON_OBJECT(
+                    'pet_name', p.name, 
+                    'pet_type', pt.type,
+                    'pet_age', p.age
+                )
+            )
+        FROM mydb.pet_details AS p
+        INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
+        WHERE p.customer_id = c.id
+    ) AS pet_details,
+    (
+        SELECT 
+            CASE
+                WHEN EXISTS (
+                    SELECT 1
+                    FROM mydb.pet_details AS pd
+                    LEFT JOIN mydb.appointment AS a ON pd.customer_id = a.customer_id
+                    LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
+                    LEFT JOIN mydb.pro_type AS vpt ON vp.id = vpt.id
+                    WHERE pd.customer_id = c.id AND a.id IS NOT NULL
+                ) THEN
+                    JSON_ARRAYAGG(
+                        JSON_OBJECT(
+                            'pet_name', p.name, 
+                            'pet_type', pt.type,
+                            'pet_age', p.age,
+                            'appointment_date', a.date,
+                            'vet_pro_name', vp.name,
+                            'vet_pro_title', vpt.title
+                        )
+                    )
+                ELSE NULL
+                END AS appointment_details
+                FROM mydb.pet_details AS p
+                INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
+                LEFT JOIN mydb.appointment AS a ON p.customer_id = a.customer_id
+                LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
+                LEFT JOIN mydb.pro_type AS vpt ON vp.id = vpt.id
+                WHERE p.customer_id = c.id
+              ) AS appointment_details
+            FROM mydb.customer AS c
+          WHERE c.id = ?`,
+      [id],
+    );
+
+    return customerData[0];
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 }

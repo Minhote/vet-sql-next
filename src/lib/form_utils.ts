@@ -13,13 +13,13 @@ export const formSchema = z.object({
           "Must be at least one especial character, one capital letter, one lowercase letter and one number.",
       },
     ),
-  identification_number: z
+  id: z
     .string()
     .length(10)
     .regex(/^[0-9]+$/, { message: "Must be 10 numbers" }),
 });
 
-export const loginFormSchema = formSchema.omit({ identification_number: true });
+export const loginFormSchema = formSchema.omit({ id: true });
 
 export type submitSchema = z.infer<typeof formSchema>;
 export type loginSchema = z.infer<typeof loginFormSchema>;
