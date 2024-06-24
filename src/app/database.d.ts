@@ -311,3 +311,8 @@ export interface customerResponse extends RowDataPacket {
       }[]
     | null;
 }
+
+export interface vetsResponse extends RowDataPacket {
+  vet_name: string;
+  vet_pro_type: string;
+}

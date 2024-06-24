@@ -1,4 +1,3 @@
-import { getSession } from "@/lib/user_utils";
 import RegisterCard from "../../components/RegisterCard";
 
 export default async function UserPage() {

@@ -4,6 +4,7 @@ import {
   customerResponse,
   getSessionResponse,
   loginData,
+  vetsResponse,
 } from "@/app/database";
 import { connection } from "@/app/database/config";
 import { genSalt, hash, compare } from "bcryptjs";
@@ -121,7 +122,7 @@ export async function getInformationById(id: string) {
                             'pet_age', p.age,
                             'appointment_date', a.date,
                             'vet_pro_name', vp.name,
-                            'vet_pro_title', vpt.title
+                            'vet_pro_type', vpt.title
                         )
                     )
                 ELSE NULL
@@ -137,8 +138,14 @@ export async function getInformationById(id: string) {
           WHERE c.id = ?`,
       [id],
     );
+    const [vetsData] = await connection.execute<vetsResponse[]>(`
+      SELECT 
+        v.name AS vet_name, pt.title AS vet_pro_type 
+        FROM mydb.vet_pro AS v 
+        INNER JOIN mydb.pro_type pt 
+        ON v.pro_type_id = pt.id`);
 
-    return customerData[0];
+    return { customerData: customerData[0], vetsData };
   } catch (error) {
     console.log(error);
     return null;

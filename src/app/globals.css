@@ -161,12 +161,18 @@ p {
   }
 
   .transition-rect {
-    transition: y 300ms ease-in 300ms, rotate 300ms ease-in, opacity 0ms 300ms;
+    transition:
+      y 300ms ease-in 300ms,
+      rotate 300ms ease-in,
+      opacity 0ms 300ms;
     transform-origin: center;
   }
   .transition-rect-expanded {
     y: 45;
-    transition: y 300ms ease-in, rotate 300ms ease-in 300ms, opacity 0ms 300ms;
+    transition:
+      y 300ms ease-in,
+      rotate 300ms ease-in 300ms,
+      opacity 0ms 300ms;
   }
   .clip-path-r {
     clip-path: path(
@@ -188,25 +194,25 @@ p {
 
 @layer components {
   .container {
-    @apply flex flex-col items-center justify-between p-5 gap-10 mx-auto;
+    @apply mx-auto flex flex-col items-center justify-between gap-10 p-5;
   }
 
   .title {
-    @apply font-bold font-heading text-txt text-4xl tracking-wider my-5;
+    @apply my-5 font-heading text-4xl font-bold tracking-wider text-txt;
   }
 
   .item-services {
     &:not(.subitem) {
-      @apply flex items-center justify-start gap-2 text-xl before:bg-footprint before:bg-no-repeat before:inline-block before:fill-primary before:size-9 before:bg-center;
+      @apply flex items-center justify-start gap-2 text-xl before:inline-block before:size-9 before:bg-footprint before:bg-center before:bg-no-repeat before:fill-primary;
     }
     &.subitem {
       @apply flex flex-col text-xl;
     }
     &.subitem > p {
-      @apply flex items-center gap-2 before:bg-footprint before:bg-no-repeat before:inline-block before:fill-primary before:size-9 before:bg-center;
+      @apply flex items-center gap-2 before:inline-block before:size-9 before:bg-footprint before:bg-center before:bg-no-repeat before:fill-primary;
     }
     &.subitem > ul {
-      @apply flex flex-col ml-8;
+      @apply ml-8 flex flex-col;
     }
   }
 
