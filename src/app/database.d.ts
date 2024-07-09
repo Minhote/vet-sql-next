@@ -1,3 +1,4 @@
+import { petSchema } from "@/lib/form_utils";
 import { RowDataPacket } from "mysql2";
 
 // export type Json =
@@ -316,3 +317,22 @@ export interface vetsResponse extends RowDataPacket {
   vet_name: string;
   vet_pro_type: string;
 }
+
+export interface idResponse extends RowDataPacket {
+  id: number;
+}
+
+export interface addPetProps extends petSchema {
+  id: string;
+}
+
+export interface addAppointmentProps {
+  vet_pro: string;
+  pet_name: string;
+  appointment_date: string;
+  id: string;
+}
+
+export interface IdObjectResponse
+  extends RowDataPacket,
+    Record<string, number> {}

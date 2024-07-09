@@ -1,8 +1,12 @@
 import {
+  IdObjectResponse,
   RegisterFormData,
   UserData,
+  addAppointmentProps,
+  addPetProps,
   customerResponse,
   getSessionResponse,
+  idResponse,
   loginData,
   vetsResponse,
 } from "@/app/database";
@@ -10,6 +14,8 @@ import { connection } from "@/app/database/config";
 import { genSalt, hash, compare } from "bcryptjs";
 import { cookies } from "next/headers";
 import { thirtyMinutes, encrypt, decrypt } from "@/middleware";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function hashingPassword(
   password: string,
@@ -86,6 +92,7 @@ export async function getSession(): Promise<getSessionResponse | null> {
   return null;
 }
 
+// SQL
 export async function getInformationById(id: string) {
   try {
     const [customerData] = await connection.execute<customerResponse[]>(
@@ -109,11 +116,8 @@ export async function getInformationById(id: string) {
             CASE
                 WHEN EXISTS (
                     SELECT 1
-                    FROM mydb.pet_details AS pd
-                    LEFT JOIN mydb.appointment AS a ON pd.customer_id = a.customer_id
-                    LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
-                    LEFT JOIN mydb.pro_type AS vpt ON vp.id = vpt.id
-                    WHERE pd.customer_id = c.id AND a.id IS NOT NULL
+                    FROM mydb.appointment AS a
+                    WHERE a.customer_id = c.id
                 ) THEN
                     JSON_ARRAYAGG(
                         JSON_OBJECT(
@@ -126,16 +130,16 @@ export async function getInformationById(id: string) {
                         )
                     )
                 ELSE NULL
-                END AS appointment_details
-                FROM mydb.pet_details AS p
-                INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
-                LEFT JOIN mydb.appointment AS a ON p.customer_id = a.customer_id
-                LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
-                LEFT JOIN mydb.pro_type AS vpt ON vp.id = vpt.id
-                WHERE p.customer_id = c.id
-              ) AS appointment_details
-            FROM mydb.customer AS c
-          WHERE c.id = ?`,
+            END
+        FROM mydb.appointment AS a
+        INNER JOIN mydb.pet_details AS p ON a.pet_details_id = p.id
+        INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
+        LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
+        LEFT JOIN mydb.pro_type AS vpt ON vp.pro_type_id = vpt.id
+        WHERE a.customer_id = c.id
+    ) AS appointment_details
+FROM mydb.customer AS c
+WHERE c.id = ?`,
       [id],
     );
     const [vetsData] = await connection.execute<vetsResponse[]>(`
@@ -149,5 +153,66 @@ export async function getInformationById(id: string) {
   } catch (error) {
     console.log(error);
     return null;
+  }
+}
+
+export async function addPet(values: addPetProps) {
+  const { pet_age, pet_name, pet_type, id } = values;
+  try {
+    const [pet_type_id] = await connection.execute<idResponse[]>(
+      `SELECT id from mydb.pet_type WHERE type = ?`,
+      [pet_type],
+    );
+    const { id: pet_id } = pet_type_id[0];
+    const [result] = await connection.execute(
+      `INSERT INTO mydb.pet_details(name, age, pet_type_id, customer_id) VALUES(?,?,?,?)`,
+      [pet_name, pet_age, pet_id, id],
+    );
+    if (!result) return false;
+    return true;
+  } catch (error) {
+    console.log(`Error en la funcion de addPet ${error}`);
+    return false;
+  }
+}
+
+export async function addAppointment(values: addAppointmentProps) {
+  try {
+    const { appointment_date, id, pet_name, vet_pro } = values;
+    const [results] = await connection.execute<IdObjectResponse[]>(
+      `SELECT 
+    vet_pro.id AS vet_id, 
+    pet_details.id AS pet_id 
+  FROM 
+    mydb.vet_pro
+  INNER JOIN 
+    mydb.pet_details 
+  WHERE 
+    vet_pro.name = ? AND 
+    pet_details.name = ?
+  `,
+      [vet_pro, pet_name],
+    );
+    const { vet_id, pet_id } = results[0];
+    const [insertedAppointment] = await connection.execute(
+      `INSERT INTO mydb.appointment (date,customer_id,vet_pro_id,pet_details_id) VALUES (?,?,?,?)`,
+      [appointment_date, id, vet_id, pet_id],
+    );
+    if (insertedAppointment) return true;
+  } catch (error) {
+    console.log(`Error en la funcion de addAppointment ${error}`);
+    return false;
+  }
+}
+export async function getAppointmentsOptions() {
+  try {
+    const [vets] = await connection.execute<
+      vetsResponse[]
+    >(`SELECT name AS vet_pro_name, title AS vet_pro_type 
+    FROM mydb.vet_pro AS vp INNER JOIN mydb.pro_type AS vpt 
+    ON vp.pro_type_id = vpt.id`);
+    return vets;
+  } catch (error) {
+    return { message: `Error en la función getAppointmentsOptions: ${error}` };
   }
 }

@@ -21,5 +21,27 @@ export const formSchema = z.object({
 
 export const loginFormSchema = formSchema.omit({ id: true });
 
+export const formPetSchema = z.object({
+  pet_name: z
+    .string()
+    .min(4, { message: "Must be at least 4 characters" })
+    .max(10, { message: "Must be at least 10 characters" }),
+  pet_type: z.string().regex(/^(Gato|Perro|Equino|Ave|Otro)$/),
+  pet_age: z.number().positive().int().gte(1).lte(15),
+});
+
+export const formAppointmentSchema = z.object({
+  vet_pro: z.string({ required_error: "Selecciona a un Veterinario" }),
+  pet_name: z.string({ required_error: "Selecciona a una mascota" }),
+  appointment_date: z.date({
+    required_error: "Selecciona a una fecha para tu cita",
+  }),
+  appointment_hour: z.string({
+    required_error: "Selecciona a una hora para tu cita",
+  }),
+});
+
 export type submitSchema = z.infer<typeof formSchema>;
 export type loginSchema = z.infer<typeof loginFormSchema>;
+export type petSchema = z.infer<typeof formPetSchema>;
+export type appointmentSchema = z.infer<typeof formAppointmentSchema>;

@@ -6,11 +6,10 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { QueryProvider } from "@/components/QueryProvider";
 import { Toaster } from "@/components/ui/sonner";
 import { getSession } from "@/lib/user_utils";
-import { toast } from "sonner";
 import { redirect } from "next/navigation";
-import { revalidatePath } from "next/cache";
 
 export default async function RootLayout({
   children,
