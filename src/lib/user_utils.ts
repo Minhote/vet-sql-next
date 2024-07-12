@@ -104,7 +104,8 @@ export async function getInformationById(id: string) {
                 JSON_OBJECT(
                     'pet_name', p.name, 
                     'pet_type', pt.type,
-                    'pet_age', p.age
+                    'pet_age', p.age,
+                    'pet_id', p.id
                 )
             )
         FROM mydb.pet_details AS p
@@ -171,7 +172,24 @@ export async function addPet(values: addPetProps) {
     if (!result) return false;
     return true;
   } catch (error) {
-    console.log(`Error en la funcion de addPet ${error}`);
+    console.log(`Error en la funcion de addPet: ${error}`);
+    return false;
+  }
+}
+
+export async function deletePet(pet_id: number) {
+  try {
+    await connection.execute(
+      `DELETE FROM mydb.appointment WHERE pet_details_id = ?`,
+      [pet_id],
+    );
+    const [resultPet] = await connection.execute(
+      `DELETE FROM mydb.pet_details WHERE id = ?`,
+      [pet_id],
+    );
+    if (resultPet) return true;
+  } catch (error) {
+    console.log(`Error en la funcion de deletePet: ${error}`);
     return false;
   }
 }
@@ -204,6 +222,7 @@ export async function addAppointment(values: addAppointmentProps) {
     return false;
   }
 }
+
 export async function getAppointmentsOptions() {
   try {
     const [vets] = await connection.execute<

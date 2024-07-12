@@ -300,6 +300,7 @@ export interface customerResponse extends RowDataPacket {
         pet_name: string;
         pet_type: string;
         pet_age: string;
+        pet_id: string;
       }[]
     | null;
   appointment_details:
