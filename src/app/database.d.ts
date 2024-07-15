@@ -293,25 +293,27 @@ export type getSessionResponse = {
   exp: number;
 };
 
+export interface appointmentDetails {
+  pet_age: number;
+  pet_name: string;
+  pet_type: string;
+  vet_pro_name: string;
+  vet_pro_type: string;
+  appointment_id: number;
+  appointment_date: string;
+}
+
+export interface petDetails {
+  pet_name: string;
+  pet_type: string;
+  pet_age: string;
+  pet_id: number;
+}
+
 export interface customerResponse extends RowDataPacket {
   customer_name: string;
-  pet_details:
-    | {
-        pet_name: string;
-        pet_type: string;
-        pet_age: string;
-        pet_id: string;
-      }[]
-    | null;
-  appointment_details:
-    | {
-        pet_name: string;
-        pet_type: string;
-        vet_pro_name: string;
-        vet_pro_type: string;
-        appointment_date: string;
-      }[]
-    | null;
+  pet_details: petDetails[] | null;
+  appointment_details: appointmentDetails[] | null;
 }
 
 export interface vetsResponse extends RowDataPacket {

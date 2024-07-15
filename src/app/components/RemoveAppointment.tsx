@@ -16,15 +16,19 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
-export default function RemovePet({ petId }: { petId: number }) {
+export default function RemoveAppointment({
+  appointmentId,
+}: {
+  appointmentId: number;
+}) {
   const router = useRouter();
   const [isDisabled, setIsDisabled] = useState(false);
-  const removePet = async () => {
+  const removeAppointment = async () => {
     setIsDisabled(true);
     try {
-      const response = await fetch("/api/user/pet", {
+      const response = await fetch("/api/user/appointment", {
         method: "DELETE",
-        body: JSON.stringify({ petId }),
+        body: JSON.stringify({ appointmentId }),
       });
 
       if (response.ok) {
@@ -34,10 +38,10 @@ export default function RemovePet({ petId }: { petId: number }) {
       } else {
         const data = await response.json();
         toast.error(`${data.message}`);
-        console.error("Error eliminando la mascota:", data.message);
+        console.error("Error eliminando la cita:", data.message);
       }
     } catch (error) {
-      console.error("Error eliminando la mascota:", error);
+      console.error("Error eliminando la cita:", error);
     } finally {
       setIsDisabled(false);
     }
@@ -45,7 +49,7 @@ export default function RemovePet({ petId }: { petId: number }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button disabled={isDisabled} variant={"ghost"} className="px-2 py-1">
+        <Button disabled={isDisabled} variant="ghost" className="px-2 py-1">
           {isDisabled ? "Eliminando" : "Eliminar"}
         </Button>
       </AlertDialogTrigger>
@@ -53,12 +57,12 @@ export default function RemovePet({ petId }: { petId: number }) {
         <AlertDialogHeader>
           <AlertDialogTitle>Estas seguro?</AlertDialogTitle>
           <AlertDialogDescription>
-            Esta acción eliminará a la mascota de nuestra base de datos.
+            Esta acción eliminará a la cita de nuestra base de datos.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction onClick={() => removePet()}>
+          <AlertDialogAction onClick={() => removeAppointment()}>
             Continuar
           </AlertDialogAction>
         </AlertDialogFooter>

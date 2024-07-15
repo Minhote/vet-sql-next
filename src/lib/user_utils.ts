@@ -14,8 +14,6 @@ import { connection } from "@/app/database/config";
 import { genSalt, hash, compare } from "bcryptjs";
 import { cookies } from "next/headers";
 import { thirtyMinutes, encrypt, decrypt } from "@/middleware";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export async function hashingPassword(
   password: string,
@@ -122,6 +120,7 @@ export async function getInformationById(id: string) {
                 ) THEN
                     JSON_ARRAYAGG(
                         JSON_OBJECT(
+                            'appointment_id', a.id,
                             'pet_name', p.name, 
                             'pet_type', pt.type,
                             'pet_age', p.age,
@@ -188,6 +187,19 @@ export async function deletePet(pet_id: number) {
       [pet_id],
     );
     if (resultPet) return true;
+  } catch (error) {
+    console.log(`Error en la funcion de deletePet: ${error}`);
+    return false;
+  }
+}
+
+export async function deleteAppointment(appointment_id: number) {
+  try {
+    const [resultAppointment] = await connection.execute(
+      `DELETE FROM mydb.appointment WHERE id = ?`,
+      [appointment_id],
+    );
+    if (resultAppointment) return true;
   } catch (error) {
     console.log(`Error en la funcion de deletePet: ${error}`);
     return false;

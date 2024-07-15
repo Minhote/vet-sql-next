@@ -1,5 +1,3 @@
-import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { Button } from "./ui/button";
 import carla from "@/app/assets/carla.jpg";
 import fabrizio from "@/app/assets/fabrizio.jpg";
 import francis from "@/app/assets/francis.jpg";
@@ -15,25 +13,12 @@ import gato from "@/app/assets/gato.svg";
 import perro from "@/app/assets/perro.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Image from "next/image";
-import AddAppointmentBtn from "./AddAppointmentBtn";
-import { vetsResponse } from "../database";
-
-interface appointmentsDetails {
-  pet_name: string;
-  pet_type: string;
-  vet_pro_name: string;
-  vet_pro_type: string;
-  appointment_date: string;
-}
-
-interface petDetails {
-  pet_name: string;
-  pet_age: string;
-  pet_type: string;
-}
+import { appointmentDetails, petDetails, vetsResponse } from "../database";
+import AddAppointmentBtnForm from "./AddAppointmentBtnForm";
+import RemoveAppointment from "./RemoveAppointment";
 
 interface PropsAppointmentsInfo {
-  appointment_details: appointmentsDetails[] | null;
+  appointment_details: appointmentDetails[] | null;
   pet_details: petDetails[] | null;
   vetsData: vetsResponse[];
 }
@@ -70,11 +55,7 @@ export default function AppointmentsInfo({
 
   return (
     <div className="flex w-60 flex-1 flex-col gap-4 p-4">
-      <AddAppointmentBtn
-        appointment_details={appointment_details}
-        pet_details={pet_details}
-        vetsData={vetsData}
-      />
+      <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
       {appointment_details.map((d) => {
         const formatDate = new Intl.DateTimeFormat("es-ES", {
           year: "numeric",
@@ -93,7 +74,7 @@ export default function AppointmentsInfo({
         });
         return (
           <div
-            key={d.pet_name + d.vet_pro_name + d.appointment_date}
+            key={d.appointment_id}
             className="flex flex-col overflow-hidden rounded-lg"
           >
             <div className="flex items-center justify-between gap-2 bg-background p-2">
@@ -127,10 +108,11 @@ export default function AppointmentsInfo({
                 <p className="font-bold text-primary-800">{d.pet_name}</p>
               </div>
             </div>
-            <div className="bg-primary-300 p-2">
+            <div className="flex items-baseline justify-around bg-primary-300 p-2">
               <p className="font-bold text-primary-700 dark:text-primary-900">
                 {formatDate}
               </p>
+              <RemoveAppointment appointmentId={d.appointment_id} />
             </div>
           </div>
         );

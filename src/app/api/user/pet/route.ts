@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
 export async function DELETE(req: NextRequest) {
   try {
-    const formData: { petId: string } = await req.json();
+    const formData: { petId: number } = await req.json();
     const { petId } = formData;
     const token = cookies().get("session")?.value;
     if (!token) {
@@ -47,11 +47,7 @@ export async function DELETE(req: NextRequest) {
         { status: 500 },
       );
     }
-    const decrypted = await decrypt(token);
-    const {
-      user: { id },
-    } = decrypted;
-    const resp = await deletePet(parseInt(petId));
+    const resp = await deletePet(petId);
     if (!resp)
       return NextResponse.json(
         { message: "Error al eliminar mascota" },

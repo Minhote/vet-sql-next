@@ -149,7 +149,7 @@ export default function AddPetBtnForm() {
             />
             <DialogFooter>
               <Button type="submit" disabled={disabled}>
-                Save changes
+                {disabled ? "Saving..." : "Save changes"}
               </Button>
             </DialogFooter>
           </form>
