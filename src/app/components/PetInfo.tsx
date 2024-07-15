@@ -7,6 +7,7 @@ import perro from "@/app/assets/perro.svg";
 import RemovePet from "@/components/RemovePet";
 import AddPetBtnForm from "@/components/AddPetBtnForm";
 import { petDetails } from "../database";
+import addPet from "@/app/assets/addPet.svg";
 
 interface PropsPetInfo {
   pet_details: petDetails[] | null;
@@ -14,7 +15,23 @@ interface PropsPetInfo {
 
 export default function PetInfo({ pet_details }: PropsPetInfo) {
   const srcs = [gato, perro, equino, ave, otro];
-  if (pet_details === null) return <div>loading</div>;
+  if (pet_details === null) {
+    return (
+      <div className="flex max-w-64 flex-col items-center justify-center gap-2 bg-background p-4">
+        <AddPetBtnForm />
+        <Image
+          src={addPet}
+          alt="Image of add Pet"
+          height={56}
+          width={56}
+          className="rounded-md bg-primary-400 p-2"
+        />
+        <p className="text-center text-base font-bold text-primary-800">
+          No tienes mascotas, puedes agregar con el boton de arriba
+        </p>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-col gap-4 rounded-md bg-background p-4">
       <div className="flex flex-col gap-2">

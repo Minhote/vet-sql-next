@@ -11,6 +11,7 @@ import ave from "@/app/assets/ave.svg";
 import equino from "@/app/assets/equino.svg";
 import gato from "@/app/assets/gato.svg";
 import perro from "@/app/assets/perro.svg";
+import addApointment from "@/app/assets/addAppointment.svg";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import Image from "next/image";
 import { appointmentDetails, petDetails, vetsResponse } from "../database";
@@ -51,12 +52,53 @@ export default function AppointmentsInfo({
     Adiestrador: ["Entramiento", "Capacitación"],
   };
 
-  if (appointment_details === null) return <div>loading...</div>;
+  const allAppointmentsCaduced = appointment_details?.every((a) => {
+    return new Date(a.appointment_date) < new Date();
+  });
+
+  if (pet_details == null) {
+    return (
+      <div className="flex w-60 flex-1 flex-col gap-4 p-4">
+        <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-lg bg-background">
+          <Image
+            src={addApointment}
+            alt="Image of add appointment"
+            height={140}
+            width={140}
+            className="rounded-md bg-primary-400 p-1"
+          />
+          <p className="w-4/5 text-center text-xl font-bold text-primary-800">
+            No tienes mascotas para agendar citas.
+          </p>
+        </div>
+      </div>
+    );
+  }
+  if (appointment_details === null || allAppointmentsCaduced) {
+    return (
+      <div className="flex w-60 flex-1 flex-col gap-4 p-4">
+        <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
+        <div className="flex flex-1 flex-col items-center justify-center gap-2 rounded-lg bg-background">
+          <Image
+            src={addApointment}
+            alt="Image of add appointment"
+            height={140}
+            width={140}
+            className="rounded-md bg-primary-400 p-1"
+          />
+          <p className="w-4/5 text-center text-xl font-bold text-primary-800">
+            No tienes citas agendadas, agrega una con el boton de arriba
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-60 flex-1 flex-col gap-4 p-4">
       <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
       {appointment_details.map((d) => {
+        if (new Date(d.appointment_date) < new Date()) return;
         const formatDate = new Intl.DateTimeFormat("es-ES", {
           year: "numeric",
           month: "long",
