@@ -1,11 +1,10 @@
 import { getInformationById } from "@/lib/user_utils";
 import { redirect } from "next/navigation";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { ExitIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 import PetInfo from "@/app/components/PetInfo";
 import VetsInfo from "@/app/components/VetsInfo";
 import AppointmentsInfo from "@/app/components/Appointments";
+import LogoutBtn from "@/app/components/LogoutBtn";
 
 export default async function IdPage({
   params: { id },
@@ -30,9 +29,7 @@ export default async function IdPage({
             <AvatarImage src="https://github.com/shadcn.png" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
-          <Button variant="outline" size="icon">
-            <ExitIcon className="h-4 w-4" />
-          </Button>
+          <LogoutBtn />
         </div>
       </header>
       <main className="mx-auto my-6 flex max-w-3xl gap-4 rounded-lg bg-primary-100 px-5 py-4">

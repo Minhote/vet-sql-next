@@ -18,7 +18,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const session = await getSession();
-  if (session) {
+  if (session !== null) {
     const {
       user: { id },
     } = session;

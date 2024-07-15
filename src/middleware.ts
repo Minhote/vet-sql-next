@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { SignJWT, jwtVerify } from "jose";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
 
 export const alg = process.env.JWTALG as string;
 export const secretKEy = process.env.JWTSECRETKEY as string;
@@ -23,22 +21,27 @@ export async function decrypt(input: string): Promise<any> {
 }
 
 export async function middleware(req: NextRequest) {
-  //Update Session if there some token
-  const session = req.cookies.get("session")?.value;
-  if (!session) return;
+  try {
+    //Update Session if there some token
+    const session = req.cookies.get("session")?.value;
+    if (session === undefined || session === "") return;
 
-  // Refresh expiration time of token
-  const parsed = await decrypt(session);
-  parsed.expires = new Date(Date.now() + thirtyMinutes);
-  const value = await encrypt(parsed);
-  const res = NextResponse.next();
-  res.cookies.set({
-    name: "session",
-    value,
-    httpOnly: true,
-    expires: parsed.expires,
-  });
-  return res;
+    // Refresh expiration time of token
+    const parsed = await decrypt(session);
+    parsed.expires = new Date(Date.now() + thirtyMinutes);
+    const value = await encrypt(parsed);
+    const res = NextResponse.next();
+    res.cookies.set({
+      name: "session",
+      value,
+      httpOnly: true,
+      expires: parsed.expires,
+    });
+    return res;
+  } catch (error) {
+    console.error("Error en el middleware:", error);
+    return NextResponse.error();
+  }
 }
 
 export const config = {

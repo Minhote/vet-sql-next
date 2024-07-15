@@ -83,11 +83,9 @@ export async function logout() {
 }
 
 export async function getSession(): Promise<getSessionResponse | null> {
-  const session = cookies().get("session");
-  if (session) {
-    return decrypt(session.value);
-  }
-  return null;
+  const value = cookies().get("session")?.value;
+  if (!value || value === "") return null;
+  return await decrypt(value);
 }
 
 // SQL
