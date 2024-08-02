@@ -2,48 +2,8 @@ export default function ServicesPage() {
   return (
     <main className="container">
       <h2 className="title">Services</h2>
-      <div className="flex flex-col flex-wrap items-center gap-5 self-stretch lg:flex-row lg:gap-0">
-        <div className="order-2 flex-auto self-stretch lg:order-1 lg:w-[510px]">
-          <p className="text-2xl font-normal text-txt">
-            In our veterinary clinic we offer a wide variety of services for the
-            care and welfare of your pets:
-          </p>
-          <ul className="my-8">
-            <li className="item-services">
-              Veterinary consultations for health check-up and diagnosis.
-            </li>
-            <li className="item-services">Vaccination to prevent diseases.</li>
-            <li className="item-services subitem">
-              <p>Veterinary surgeries such as:</p>
-              <ul>
-                <li className="item-services">Spaying and neutering.</li>
-                <li className="item-services">Soft tissue surgery.</li>
-                <li className="item-services">Orthopedic surgery.</li>
-              </ul>
-            </li>
-            <li className="item-services">
-              Treatments for specific diseases and conditions.
-            </li>
-            <li className="item-services">Emergency care 24 hours a day.</li>
-            <li className="item-services">Nutritional and dietary advice.</li>
-            <li className="item-services">
-              Dental care with cleaning and tartar removal.
-            </li>
-            <li className="item-services">
-              Day care and temporary residence for pets.
-            </li>
-            <li className="item-services">
-              Canine and feline aesthetics and hairdressing.
-            </li>
-          </ul>
-          <p className="text-2xl font-normal text-txt">
-            Trust us for the complete care of your beloved pets!
-          </p>
-        </div>
-        <svg
-          viewBox="0 0 889.07556 459.37952"
-          className="order-1 w-[475px] flex-auto lg:order-2"
-        >
+      <div className="flex max-w-4xl flex-col flex-wrap items-center gap-5">
+        <svg viewBox="0 0 889.07556 459.37952" className="w-[475px] flex-auto">
           <title>welcome_cats</title>
           <ellipse
             cx="444.53778"
@@ -256,6 +216,43 @@ export default function ServicesPage() {
           <circle cx="791.07556" cy="206.37952" r="9" fill="#40d46a" />
           <circle cx="677.07556" cy="368.37952" r="9" fill="#40d46a" />
         </svg>
+        <div className="flex-auto self-stretch">
+          <p className="text-2xl font-normal text-txt">
+            In our veterinary clinic we offer a wide variety of services for the
+            care and welfare of your pets:
+          </p>
+          <ul className="my-8">
+            <li className="item-services">
+              Veterinary consultations for health check-up and diagnosis.
+            </li>
+            <li className="item-services">Vaccination to prevent diseases.</li>
+            <li className="item-services subitem">
+              <p>Veterinary surgeries such as:</p>
+              <ul>
+                <li className="item-services">Spaying and neutering.</li>
+                <li className="item-services">Soft tissue surgery.</li>
+                <li className="item-services">Orthopedic surgery.</li>
+              </ul>
+            </li>
+            <li className="item-services">
+              Treatments for specific diseases and conditions.
+            </li>
+            <li className="item-services">Emergency care 24 hours a day.</li>
+            <li className="item-services">Nutritional and dietary advice.</li>
+            <li className="item-services">
+              Dental care with cleaning and tartar removal.
+            </li>
+            <li className="item-services">
+              Day care and temporary residence for pets.
+            </li>
+            <li className="item-services">
+              Canine and feline aesthetics and hairdressing.
+            </li>
+          </ul>
+          <p className="text-2xl font-normal text-txt">
+            Trust us for the complete care of your beloved pets!
+          </p>
+        </div>
       </div>
     </main>
   );

@@ -12,9 +12,9 @@ import {
 } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { petDetails, vetsResponse } from "../database";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { petDetails, vetsResponse } from "@/app/database";
 import { useRouter } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
 import { appointmentSchema, formAppointmentSchema } from "@/lib/form_utils";

@@ -1,10 +1,10 @@
-import RegisterCard from "../../components/RegisterCard";
+import { Badge } from "@/app/components/ui/badge";
 
 export default function PricingPage() {
   return (
     <main className="container">
       <h2 className="title">Pricing</h2>
-      <div className="grid  grid-flow-dense auto-rows-[100px] grid-cols-[repeat(auto-fill,minmax(min(100px,100%),1fr))] place-content-center gap-5 self-stretch">
+      {/* <div className="grid  grid-flow-dense auto-rows-[100px] grid-cols-[repeat(auto-fill,minmax(min(100px,100%),1fr))] place-content-center gap-5 self-stretch">
         <div className="col-span-2 flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt lg:col-span-3 dark:bg-secondary">
           <h3 className="text-2xl font-bold">Consult</h3>
           <span className="text-xl font-bold text-background">$ 10</span>
@@ -59,10 +59,16 @@ export default function PricingPage() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
       <div className="lg:w-3/4">
         <div className="my-6 flex flex-col gap-4">
-          <h3 className="text-2xl font-bold text-primary">Consult</h3>
+          <h3 className="text-3xl font-bold text-primary">Consult</h3>
+          <Badge
+            variant="secondary"
+            className="self-start font-bold text-primary-500 dark:text-primary-500"
+          >
+            $ 10
+          </Badge>
           <p className="text-xl font-normal text-txt">
             At our veterinary practice, we are committed to providing the best
             medical care for your pet. best medical care for your pet. Our team
@@ -82,6 +88,12 @@ export default function PricingPage() {
         </div>
         <div className="my-6 flex flex-col gap-4">
           <h3 className="text-2xl font-bold text-primary ">Deworming</h3>
+          <Badge
+            variant="secondary"
+            className="self-start font-bold text-primary-500 dark:text-primary-500"
+          >
+            $ 20
+          </Badge>
           <p className="text-xl font-normal text-txt">
             Our deworming service is essential to ensure the continued health
             and well-being of your pet. We know how important it is to protect
@@ -100,6 +112,12 @@ export default function PricingPage() {
         </div>
         <div className="my-6 flex flex-col gap-4">
           <h3 className="text-2xl font-bold text-primary ">Styling</h3>
+          <Badge
+            variant="secondary"
+            className="self-start font-bold text-primary-500 dark:text-primary-500"
+          >
+            $ 20
+          </Badge>
           <p className="text-xl font-normal text-txt">
             Our veterinary stylist service offers much more than just haircuts
             for your pet. Our stylists are trained professionals who understand
@@ -117,6 +135,12 @@ export default function PricingPage() {
         </div>
         <div className="my-6 flex flex-col gap-4">
           <h3 className="text-2xl font-bold text-primary ">Training</h3>
+          <Badge
+            variant="secondary"
+            className="self-start font-bold text-primary-500 dark:text-primary-500"
+          >
+            $ 20 - $ 100
+          </Badge>
           <p className="text-xl font-normal text-txt">
             Our pet training service is designed to help you strengthen your
             bond with your furry companion and ensure proper behavior in a
@@ -142,10 +166,16 @@ export default function PricingPage() {
             surgeries to address the specific medical needs of your pets:
           </p>
           <ul className="flex flex-col gap-4">
-            <li className="item-services flex-wrap">
-              <span className="inline-block text-2xl font-bold text-primary">
+            <li className="item-services flex-wrap ">
+              <span className="inline-block text-xl font-bold text-primary">
                 General Surgery:
               </span>
+              <Badge
+                variant="secondary"
+                className="self-start font-bold text-primary-500 dark:text-primary-500"
+              >
+                $ 30
+              </Badge>
               <p className="text-xl font-normal text-txt">
                 We perform routine surgical procedures, such as spaying and
                 neutering, removal of benign tumors, correction of hernias, and
@@ -153,9 +183,15 @@ export default function PricingPage() {
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="inline-block text-2xl font-bold text-primary">
+              <span className="inline-block text-xl font-bold text-primary">
                 Orthopedic Surgery:
               </span>
+              <Badge
+                variant="secondary"
+                className="self-start font-bold text-primary-500 dark:text-primary-500"
+              >
+                $ 50
+              </Badge>
               <p className="text-xl font-normal text-txt">
                 Our orthopedic veterinarians are trained to treat
                 musculoskeletal injuries and conditions, such as bone fractures,
@@ -163,9 +199,15 @@ export default function PricingPage() {
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="inline-block text-2xl font-bold text-primary">
+              <span className="inline-block text-xl font-bold text-primary">
                 Soft Tissue Surgery:
               </span>
+              <Badge
+                variant="secondary"
+                className="self-start font-bold text-primary-500 dark:text-primary-500"
+              >
+                $ 80
+              </Badge>
               <p className="text-xl font-normal text-txt">
                 This specialty focuses on surgical interventions on internal
                 organs and non-bony structures. We perform abdominal, thoracic
@@ -174,9 +216,15 @@ export default function PricingPage() {
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="inline-block text-2xl font-bold text-primary">
+              <span className="inline-block text-xl font-bold text-primary">
                 Dental Surgery:
               </span>
+              <Badge
+                variant="secondary"
+                className="self-start font-bold text-primary-500 dark:text-primary-500"
+              >
+                $ 30
+              </Badge>
               <p className="text-xl font-normal text-txt">
                 Our dental procedures include dental cleanings, extractions of
                 damaged or infected teeth, treatment of periodontal disease and
@@ -184,9 +232,15 @@ export default function PricingPage() {
               </p>
             </li>
             <li className="item-services flex-wrap">
-              <span className="inline-block text-2xl font-bold text-primary">
+              <span className="inline-block text-xl font-bold text-primary">
                 Emergency Surgery:
               </span>
+              <Badge
+                variant="secondary"
+                className="self-start font-bold text-primary-500 dark:text-primary-500"
+              >
+                $ 60
+              </Badge>
               <p className="text-xl font-normal text-txt">
                 We are available 24 hours a day to provide emergency surgical
                 care in cases of severe trauma, intestinal obstructions, gastric
@@ -196,7 +250,6 @@ export default function PricingPage() {
           </ul>
         </div>
       </div>
-      <RegisterCard />
     </main>
   );
 }

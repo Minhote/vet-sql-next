@@ -1,13 +1,12 @@
 import Image from "next/image";
-import img9 from "../assets/img-9.jpg";
-import img10 from "../assets/img-10.jpg";
-import RegisterCard from "../../components/RegisterCard";
+import img9 from "@/app/assets/img-9.jpg";
+import img10 from "@/app/assets/img-10.jpg";
 
 export default function AboutPage() {
   return (
     <main className="container">
       <h2 className="title">About</h2>
-      <div className="grid auto-rows-max grid-cols-12 place-items-center gap-3">
+      <div className="grid max-w-4xl auto-rows-max grid-cols-12 place-items-center gap-3">
         <div className="col-span-8 row-span-4">
           <h3 className="text-center text-2xl font-bold text-primary">
             Our History: Celebrating an Enduring Dedication to Animal Health
@@ -91,7 +90,6 @@ export default function AboutPage() {
         your four-legged loved ones. We look forward to continuing to serve our
         community with passion, dedication and compassion for years to come.
       </p>
-      <RegisterCard />
     </main>
   );
 }

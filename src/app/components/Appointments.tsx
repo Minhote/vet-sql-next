@@ -12,11 +12,12 @@ import equino from "@/app/assets/equino.svg";
 import gato from "@/app/assets/gato.svg";
 import perro from "@/app/assets/perro.svg";
 import addApointment from "@/app/assets/addAppointment.svg";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Image from "next/image";
-import { appointmentDetails, petDetails, vetsResponse } from "../database";
-import AddAppointmentBtnForm from "./AddAppointmentBtnForm";
-import RemoveAppointment from "./RemoveAppointment";
+import { appointmentDetails, petDetails, vetsResponse } from "@/app/database";
+import AddAppointmentBtnForm from "@/app/components/AddAppointmentBtnForm";
+import RemoveAppointment from "@/app/components/RemoveAppointment";
+import { Badge } from "@/components/ui/badge";
 
 interface PropsAppointmentsInfo {
   appointment_details: appointmentDetails[] | null;
@@ -127,14 +128,15 @@ export default function AppointmentsInfo({
                 </Avatar>
                 <p className="font-bold text-primary-800">{d.vet_pro_name}</p>
               </div>
-              <div className="flex flex-wrap justify-between gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-2">
                 {appointmentDescription[d.vet_pro_type].map((el) => (
-                  <span
+                  <Badge
+                    variant="secondary"
                     key={el}
-                    className="rounded bg-primary px-1 py-2 text-sm font-bold tracking-wide text-primary-800 dark:bg-primary-500 dark:text-primary-950"
+                    className="text-sm tracking-wide text-primary-500 dark:text-primary-500"
                   >
                     {el}
-                  </span>
+                  </Badge>
                 ))}
               </div>
               <div className="gap 2 flex flex-col items-center justify-center">
