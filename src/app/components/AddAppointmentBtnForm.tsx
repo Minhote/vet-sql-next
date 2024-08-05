@@ -74,7 +74,7 @@ export default function AddAppointmentBtnForm({
     if (!open) {
       form.reset();
     }
-  }, [open]);
+  }, [open, form]);
 
   const selectedVetName = useWatch({ control: form.control, name: "vet_pro" });
   const selectedVetType =

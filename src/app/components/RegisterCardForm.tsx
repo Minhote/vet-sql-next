@@ -26,26 +26,52 @@ import { useRouter } from "next/navigation";
 
 const RegisterCardForm = ({ type }: RegisterCardProps) => {
   const router = useRouter();
-  if (type === "submit") {
-    const submitform = useForm<submitSchema>({
-      resolver: zodResolver(formSchema),
-      defaultValues: { username: "", password: "", id: "" },
-    });
 
-    async function onSubmit(values: z.infer<typeof formSchema>) {
-      const resp = await fetch("/api/user/create", {
-        method: "POST",
-        body: JSON.stringify(values),
-      });
-      const status = resp.statusText;
-      const data = await resp.json();
-      if (status === "Created") {
-        toast.info(`${data.message}`);
-        submitform.reset();
-      } else if (status === "Conflict") {
-        toast.error(`${data.message}`);
-      }
+  const submitform = useForm<submitSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: { username: "", password: "", id: "" },
+  });
+
+  const loginform = useForm<loginSchema>({
+    resolver: zodResolver(loginFormSchema),
+    defaultValues: {
+      password: "",
+      username: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const resp = await fetch("/api/user/create", {
+      method: "POST",
+      body: JSON.stringify(values),
+    });
+    const status = resp.statusText;
+    const data = await resp.json();
+    if (status === "Created") {
+      toast.info(`${data.message}`);
+      submitform.reset();
+    } else if (status === "Conflict") {
+      toast.error(`${data.message}`);
     }
+  }
+
+  async function onLogin(values: z.infer<typeof loginFormSchema>) {
+    const resp = await fetch("/api/user/login", {
+      method: "POST",
+      body: JSON.stringify(values),
+    });
+    const status = resp.statusText;
+    const data = await resp.json();
+    if (status === "OK") {
+      toast.info(`${data.message}`);
+      loginform.reset();
+      router.push(`/user/${data.user.id}`);
+    } else {
+      toast.error(`${data.message}`);
+    }
+  }
+
+  if (type === "submit") {
     return (
       <Form {...submitform}>
         <form
@@ -130,30 +156,6 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
       </Form>
     );
   } else if (type === "login") {
-    const loginform = useForm<loginSchema>({
-      resolver: zodResolver(loginFormSchema),
-      defaultValues: {
-        password: "",
-        username: "",
-      },
-    });
-
-    async function onLogin(values: z.infer<typeof loginFormSchema>) {
-      const resp = await fetch("/api/user/login", {
-        method: "POST",
-        body: JSON.stringify(values),
-      });
-      const status = resp.statusText;
-      const data = await resp.json();
-      if (status === "OK") {
-        toast.info(`${data.message}`);
-        loginform.reset();
-        router.push(`/user/${data.user.id}`);
-      } else {
-        toast.error(`${data.message}`);
-      }
-    }
-
     return (
       <Form {...loginform}>
         <form onSubmit={loginform.handleSubmit(onLogin)} className="space-y-8">
