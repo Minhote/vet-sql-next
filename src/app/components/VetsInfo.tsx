@@ -8,6 +8,7 @@ import juan from "@/app/assets/juan.jpg";
 import raquel from "@/app/assets/raquel.jpg";
 import marina from "@/app/assets/marina.jpg";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Badge } from "./ui/badge";
 
 interface PropsVetsInfo {
   vetsData: vetsResponse[];
@@ -34,18 +35,12 @@ export default function VetsInfo({ vetsData }: PropsVetsInfo) {
             <p className="w-20 flex-1 font-bold text-primary-800">
               {vet.vet_name}
             </p>
-<<<<<<< HEAD
             <Badge
               variant="secondary"
               className="text-sm text-primary-500 dark:text-primary-500"
             >
               {vet.vet_pro_type}
             </Badge>
-=======
-            <span className="inline-block max-w-20 rounded bg-secondary px-1 py-1 text-sm font-bold tracking-wider text-secondary-700 dark:text-secondary-900">
-              {vet.vet_pro_type}
-            </span>
->>>>>>> parent of 7608c4f (Logout Functionality Fixed)
           </div>
         );
       })}
