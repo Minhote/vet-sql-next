@@ -14,7 +14,7 @@ export default function PricingPage() {
             health evaluations, accurate diagnostics and effective effective
             treatments for a wide range of medical conditions. At whether your
             pet needs a simple routine checkup or is experiencing more serious
-            health experiencing more serious health problems, we're here to
+            health experiencing more serious health problems, we&apos;re here to
             help. help. In addition, we provide a warm and welcoming environment
             where both you and your pet feel comfortable and and your pet feel
             comfortable and welcome - trust us to care for your four-legged
@@ -70,11 +70,11 @@ export default function PricingPage() {
             focuses on effective communication, setting clear boundaries and
             reinforcing desirable behaviors. In addition to training sessions at
             our facility, we offer customized in-home training programs, where
-            we work together with you to address your pet's specific challenges.
-            Our goal is to provide tools and techniques that will allow you to
-            enjoy a harmonious and satisfying coexistence with your pet. Trust
-            our team to provide you with the support and guidance you need to
-            keep your pet happy, healthy and well-mannered.
+            we work together with you to address your pet&apos;s specific
+            challenges. Our goal is to provide tools and techniques that will
+            allow you to enjoy a harmonious and satisfying coexistence with your
+            pet. Trust our team to provide you with the support and guidance you
+            need to keep your pet happy, healthy and well-mannered.
           </p>
         </div>
         <div className="my-6 flex flex-col gap-4">
