@@ -127,11 +127,7 @@ export default function AppointmentsInfo({
                 </Avatar>
                 <p className="font-bold text-primary-800">{d.vet_pro_name}</p>
               </div>
-<<<<<<< HEAD
               <div className="flex flex-wrap items-center justify-center gap-2 max-md:order-3 max-md:col-span-2">
-=======
-              <div className="flex flex-wrap justify-between gap-2">
->>>>>>> parent of 7608c4f (Logout Functionality Fixed)
                 {appointmentDescription[d.vet_pro_type].map((el) => (
                   <span
                     key={el}

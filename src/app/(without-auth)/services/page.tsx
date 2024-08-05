@@ -1,13 +1,7 @@
 export default function ServicesPage() {
   return (
-    <main className="container">
+    <div className="container">
       <h2 className="title">Services</h2>
-<<<<<<< HEAD
-      <div className="flex max-w-4xl flex-col flex-wrap items-center gap-5">
-        <svg
-          viewBox="0 0 889.07556 459.37952"
-          className="w-[250px]  flex-auto  sm:w-[475px]"
-=======
       <div className="flex flex-col flex-wrap items-center gap-5 self-stretch lg:flex-row lg:gap-0">
         <div className="order-2 flex-auto self-stretch lg:order-1 lg:w-[510px]">
           <p className="text-2xl font-normal text-txt">
@@ -49,7 +43,6 @@ export default function ServicesPage() {
         <svg
           viewBox="0 0 889.07556 459.37952"
           className="order-1 w-[475px] flex-auto lg:order-2"
->>>>>>> parent of 7608c4f (Logout Functionality Fixed)
         >
           <title>welcome_cats</title>
           <ellipse
@@ -264,6 +257,6 @@ export default function ServicesPage() {
           <circle cx="677.07556" cy="368.37952" r="9" fill="#40d46a" />
         </svg>
       </div>
-    </main>
+    </div>
   );
 }

@@ -8,6 +8,7 @@ import RemovePet from "@/components/RemovePet";
 import AddPetBtnForm from "@/components/AddPetBtnForm";
 import { petDetails } from "../database";
 import addPet from "@/app/assets/addPet.svg";
+import { Badge } from "./ui/badge";
 
 interface PropsPetInfo {
   pet_details: petDetails[] | null;
@@ -50,14 +51,10 @@ export default function PetInfo({ pet_details }: PropsPetInfo) {
                 {pet.pet_name}
               </p>
               <RemovePet petId={pet.pet_id} />
-<<<<<<< HEAD
               <Badge
                 variant="secondary"
                 className="text-center text-sm font-bold text-primary-700 dark:text-primary-900"
               >{`${pet.pet_age} years`}</Badge>
-=======
-              <span className="inline-block rounded bg-secondary px-1 py-1 text-sm font-bold text-secondary-700 dark:text-secondary-900">{`${pet.pet_age} years`}</span>
->>>>>>> parent of 7608c4f (Logout Functionality Fixed)
             </div>
           );
         })}
