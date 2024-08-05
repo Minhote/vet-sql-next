@@ -96,7 +96,7 @@ export default function AppointmentsInfo({
   }
 
   return (
-    <div className="flex w-60 flex-1 flex-col gap-4 p-4">
+    <div className="flex flex-1 flex-col gap-4 p-4 md:w-60">
       <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
       {appointment_details.map((d) => {
         if (new Date(d.appointment_date) < new Date()) return;
@@ -120,7 +120,7 @@ export default function AppointmentsInfo({
             key={d.appointment_id}
             className="flex flex-col overflow-hidden rounded-lg"
           >
-            <div className="flex items-center justify-between gap-2 bg-background p-2">
+            <div className="grid grid-cols-2 place-content-center items-center justify-between gap-4 bg-background p-2 md:flex md:gap-2">
               <div className="flex flex-col items-center gap-1">
                 <Avatar>
                   <AvatarImage src={vetImg.src} />
@@ -128,7 +128,7 @@ export default function AppointmentsInfo({
                 </Avatar>
                 <p className="font-bold text-primary-800">{d.vet_pro_name}</p>
               </div>
-              <div className="flex flex-wrap items-center justify-center gap-2">
+              <div className="flex flex-wrap items-center justify-center gap-2 max-md:order-3 max-md:col-span-2">
                 {appointmentDescription[d.vet_pro_type].map((el) => (
                   <Badge
                     variant="secondary"
@@ -152,8 +152,8 @@ export default function AppointmentsInfo({
                 <p className="font-bold text-primary-800">{d.pet_name}</p>
               </div>
             </div>
-            <div className="flex items-baseline justify-around bg-primary-300 p-2">
-              <p className="font-bold text-primary-700 dark:text-primary-900">
+            <div className="flex items-baseline justify-around bg-primary-300 p-2 max-sm:flex-col max-sm:items-center max-sm:justify-center max-sm:gap-2">
+              <p className="font-bold text-primary-700 max-sm:text-center dark:text-primary-900">
                 {formatDate}
               </p>
               <RemoveAppointment appointmentId={d.appointment_id} />

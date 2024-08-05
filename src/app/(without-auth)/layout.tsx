@@ -40,8 +40,8 @@ export default async function RootLayout({
             <Header />
             {children}
 
-            <footer className="self-stretch bg-primary text-txt">
-              Pie de página
+            <footer className="bg-primary p-4 text-center text-xl font-bold text-primary-100">
+              Count on us
             </footer>
           </ThemeProvider>
         </body>

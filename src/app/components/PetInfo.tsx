@@ -35,7 +35,7 @@ export default function PetInfo({ pet_details }: PropsPetInfo) {
   }
   return (
     <div className="flex flex-col gap-4 rounded-md bg-background p-4">
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 ">
         <AddPetBtnForm />
         {pet_details.map((pet) => {
           const ele = srcs.filter((el) => {
@@ -44,7 +44,7 @@ export default function PetInfo({ pet_details }: PropsPetInfo) {
           return (
             <div
               key={pet.pet_id.toString()}
-              className="flex w-full items-center gap-2 rounded-md bg-primary-400 px-2 py-1"
+              className="grid w-full grid-cols-3 place-items-center gap-4  rounded-md bg-primary-400 p-4 sm:flex sm:items-center sm:gap-2 sm:px-2 sm:py-1"
             >
               <Image src={ele[0]} alt="img" width={26} height={26} />
               <p className="flex-1 text-base font-bold tracking-wider text-primary-800">
@@ -53,7 +53,7 @@ export default function PetInfo({ pet_details }: PropsPetInfo) {
               <RemovePet petId={pet.pet_id} />
               <Badge
                 variant="secondary"
-                className="text-sm font-bold text-primary-700 dark:text-primary-900"
+                className="text-center text-sm font-bold text-primary-700 dark:text-primary-900"
               >{`${pet.pet_age} years`}</Badge>
             </div>
           );

@@ -7,7 +7,7 @@ export default function AboutPage() {
     <main className="container">
       <h2 className="title">About</h2>
       <div className="grid max-w-4xl auto-rows-max grid-cols-12 place-items-center gap-3">
-        <div className="col-span-8 row-span-4">
+        <div className="col-span-full row-span-4 sm:col-span-8 ">
           <h3 className="text-center text-2xl font-bold text-primary">
             Our History: Celebrating an Enduring Dedication to Animal Health
           </h3>
@@ -26,7 +26,7 @@ export default function AboutPage() {
             medicine.
           </p>
         </div>
-        <div className="col-span-4 row-span-5">
+        <div className="col-span-full row-span-5 sm:col-span-4">
           <Image
             src={img10}
             alt="Image of our founder"
@@ -47,7 +47,7 @@ export default function AboutPage() {
             commitment to animal health and wellness was evident.
           </p>
         </div>
-        <div className="col-span-8 row-span-1">
+        <div className="col-span-full row-span-1 sm:col-span-8">
           <h3 className="text-2xl font-bold text-primary">
             Growth and Expansion
           </h3>

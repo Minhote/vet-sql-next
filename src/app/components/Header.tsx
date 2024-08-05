@@ -39,8 +39,8 @@ export default function Header() {
           ></rect>
         </svg>
       </button>
-      <ul className="flex h-dvh flex-col  items-center justify-center gap-10 bg-primary p-4  transition-all duration-500 peer-aria-expanded:right-0 peer-aria-expanded:w-full peer-aria-expanded:opacity-100 max-sm:absolute max-sm:right-5 max-sm:w-0 max-sm:opacity-0 sm:h-20 sm:flex-row">
-        <li className="group relative text-txt">
+      <ul className="flex h-dvh flex-col  items-center justify-center gap-10 bg-primary p-4  transition-all duration-500 peer-aria-expanded:right-0 peer-aria-expanded:w-1/3 peer-aria-expanded:opacity-100 max-sm:absolute max-sm:right-5 max-sm:w-0 max-sm:opacity-0 sm:h-20 sm:flex-row">
+        <li className="h-li group relative text-txt">
           <Link
             prefetch
             href="/"
@@ -62,7 +62,7 @@ export default function Header() {
             </span>
           </Link>
         </li>
-        <li className="group relative text-txt">
+        <li className="h-li group relative text-txt">
           <Link
             href="/services"
             className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
@@ -87,7 +87,7 @@ export default function Header() {
             </span>
           </Link>
         </li>
-        <li className="group relative text-txt">
+        <li className="h-li group relative text-txt">
           <Link
             href="/pricing"
             className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
@@ -113,7 +113,7 @@ export default function Header() {
             </span>
           </Link>
         </li>
-        <li className="group relative text-txt">
+        <li className="h-li group relative text-txt">
           <Link
             href="/about"
             className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"
@@ -134,7 +134,7 @@ export default function Header() {
             </span>
           </Link>
         </li>
-        <li className="group relative text-txt">
+        <li className="h-li group relative text-txt">
           <Link
             href="/login"
             className="flex flex-col items-center transition-all duration-300 before:absolute before:-top-[20px] before:h-12 before:w-14 before:origin-center before:rounded-b-md before:bg-background before:opacity-0 before:transition before:group-hover:origin-top before:group-hover:opacity-100"

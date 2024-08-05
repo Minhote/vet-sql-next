@@ -48,7 +48,7 @@ export default function RemovePet({ petId }: { petId: number }) {
         <Button
           disabled={isDisabled}
           variant="link"
-          className="p-1 tracking-wider"
+          className="p-1 tracking-wider max-sm:order-4 max-sm:col-span-full"
         >
           {isDisabled ? "Eliminando" : "Eliminar"}
         </Button>

@@ -1,7 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { connection } from "@/app/database/config";
-import { hashingPassword, register } from "@/lib/user_utils";
-import { UserData } from "@/app/database";
+import { register } from "@/lib/user_utils";
 
 export async function POST(req: NextRequest) {
   try {

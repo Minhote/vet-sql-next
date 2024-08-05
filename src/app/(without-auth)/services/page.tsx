@@ -3,7 +3,10 @@ export default function ServicesPage() {
     <main className="container">
       <h2 className="title">Services</h2>
       <div className="flex max-w-4xl flex-col flex-wrap items-center gap-5">
-        <svg viewBox="0 0 889.07556 459.37952" className="w-[475px] flex-auto">
+        <svg
+          viewBox="0 0 889.07556 459.37952"
+          className="w-[250px]  flex-auto  sm:w-[475px]"
+        >
           <title>welcome_cats</title>
           <ellipse
             cx="444.53778"

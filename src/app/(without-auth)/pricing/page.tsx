@@ -4,62 +4,6 @@ export default function PricingPage() {
   return (
     <main className="container">
       <h2 className="title">Pricing</h2>
-      {/* <div className="grid  grid-flow-dense auto-rows-[100px] grid-cols-[repeat(auto-fill,minmax(min(100px,100%),1fr))] place-content-center gap-5 self-stretch">
-        <div className="col-span-2 flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt lg:col-span-3 dark:bg-secondary">
-          <h3 className="text-2xl font-bold">Consult</h3>
-          <span className="text-xl font-bold text-background">$ 10</span>
-        </div>
-        <div className="col-span-2  col-start-2 flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt sm:col-start-auto lg:col-span-3 dark:bg-secondary">
-          <h3 className="text-2xl font-bold">Deworming</h3>
-          <span className="text-xl font-bold text-background">$ 20</span>
-        </div>
-        <div className="col-span-2  flex flex-col items-center justify-center rounded-md bg-secondary-500 text-txt lg:col-span-3 dark:bg-secondary">
-          <h3 className="text-2xl font-bold">Styling</h3>
-          <span className="text-xl font-bold text-background">$ 20</span>
-        </div>
-        <div className="col-span-3 row-span-2 flex flex-col items-center  justify-center rounded-md bg-secondary-500 text-txt max-sm:col-span-full md:col-span-2 lg:col-span-5 dark:bg-secondary">
-          <h3 className="text-2xl font-bold">Training</h3>
-          <ul className="flex flex-wrap items-center justify-around self-stretch">
-            <li className="text-center">
-              <p className="text-xl font-bold">Dog</p>
-              <span className="text-xl font-bold text-background">$ 20</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Cat</p>
-              <span className="text-xl font-bold text-background">$ 40</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Equine</p>
-              <span className="text-xl font-bold text-background">$ 100</span>
-            </li>
-          </ul>
-        </div>
-        <div className="col-span-3 row-span-3 flex items-center justify-between gap-2 rounded-md bg-secondary-500 p-2 text-txt max-sm:col-span-full sm:col-span-full sm:row-span-2 md:col-span-4 lg:col-span-6 lg:col-start-2 xl:col-span-5 xl:col-start-6 dark:bg-secondary">
-          <h3 className="text-2xl font-bold">Surgery</h3>
-          <ul className="flex flex-wrap items-center justify-evenly gap-2 self-stretch">
-            <li className="text-center">
-              <p className="text-xl font-bold">General</p>
-              <span className="text-xl font-bold text-background">$ 30</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Ortopedic</p>
-              <span className="text-xl font-bold text-background">$ 50</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Soft-Tissue</p>
-              <span className="text-xl font-bold text-background">$ 80</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Dental</p>
-              <span className="text-xl font-bold text-background">$ 30</span>
-            </li>
-            <li className="text-center">
-              <p className="text-xl font-bold">Emergency</p>
-              <span className="text-xl font-bold text-background">$ 60</span>
-            </li>
-          </ul>
-        </div>
-      </div> */}
       <div className="lg:w-3/4">
         <div className="my-6 flex flex-col gap-4">
           <h3 className="text-3xl font-bold text-primary">Consult</h3>
