@@ -92,7 +92,7 @@ export default function AddPetBtnForm() {
                   <FormControl>
                     <Input placeholder="Rocky" {...field} />
                   </FormControl>
-                  <FormDescription>Insert yout pet's name</FormDescription>
+                  <FormDescription>Insert your pet&apos;s name</FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
@@ -113,7 +113,7 @@ export default function AddPetBtnForm() {
                     />
                   </FormControl>
                   <FormDescription>
-                    Insert your pet's age (min 1).
+                    Insert your pet&apos;s age (min 1).
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -142,7 +142,9 @@ export default function AddPetBtnForm() {
                       <SelectItem value="Otro">Otro</SelectItem>
                     </SelectContent>
                   </Select>
-                  <FormDescription>Select your pet's type.</FormDescription>
+                  <FormDescription>
+                    Select your pet&apos;s type.
+                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
