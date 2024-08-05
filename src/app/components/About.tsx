@@ -28,8 +28,8 @@ export default function About() {
         <AccordionItem value="item-3">
           <AccordionTrigger>Awardees and certificates</AccordionTrigger>
           <AccordionContent>
-            We were able to achieve the achievement of "better animal treatment"
-            registered under a major international regulator.
+            We were able to achieve the achievement of &quot;better animal
+            treatment&quot; registered under a major international regulator.
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="item-4">
