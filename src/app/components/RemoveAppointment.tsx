@@ -49,11 +49,7 @@ export default function RemoveAppointment({
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button
-          disabled={isDisabled}
-          variant="link"
-          className="p-1 tracking-wider"
-        >
+        <Button disabled={isDisabled} variant="ghost" className="px-2 py-1">
           {isDisabled ? "Eliminando" : "Eliminar"}
         </Button>
       </AlertDialogTrigger>

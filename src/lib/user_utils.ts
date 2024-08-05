@@ -79,8 +79,7 @@ export async function login(formData: loginData) {
 }
 
 export async function logout() {
-  cookies().delete("session");
-  return true;
+  cookies().set("session", "", { expires: new Date(0) });
 }
 
 export async function getSession(): Promise<getSessionResponse | null> {

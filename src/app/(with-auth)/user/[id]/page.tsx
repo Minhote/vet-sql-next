@@ -33,7 +33,7 @@ export default async function IdPage({
         </div>
       </header>
       <main className="mx-auto my-6 flex max-w-3xl gap-4 rounded-lg bg-primary-100 px-5 py-4">
-        <div className="flex max-w-72 flex-col gap-8">
+        <div className="flex flex-col gap-8">
           <PetInfo pet_details={pet_details} />
           <VetsInfo vetsData={vetsData} />
         </div>

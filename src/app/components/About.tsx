@@ -1,10 +1,10 @@
-import GridGallery from "@/app/components/GridGallery";
+import GridGallery from "./GridGallery";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "./ui/accordion";
 
 export default function About() {
   return (

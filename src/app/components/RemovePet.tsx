@@ -45,11 +45,15 @@ export default function RemovePet({ petId }: { petId: number }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
+<<<<<<< HEAD
         <Button
           disabled={isDisabled}
           variant="link"
           className="p-1 tracking-wider max-sm:order-4 max-sm:col-span-full"
         >
+=======
+        <Button disabled={isDisabled} variant={"ghost"} className="px-2 py-1">
+>>>>>>> parent of 7608c4f (Logout Functionality Fixed)
           {isDisabled ? "Eliminando" : "Eliminar"}
         </Button>
       </AlertDialogTrigger>

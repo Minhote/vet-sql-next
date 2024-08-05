@@ -207,7 +207,7 @@ p {
 
   .item-services {
     &:not(.subitem) {
-      @apply flex items-center justify-start gap-4 text-xl before:inline-block before:size-9 before:bg-footprint before:bg-center before:bg-no-repeat before:fill-primary;
+      @apply flex items-center justify-start gap-2 text-xl before:inline-block before:size-9 before:bg-footprint before:bg-center before:bg-no-repeat before:fill-primary;
     }
     &.subitem {
       @apply flex flex-col text-xl;
