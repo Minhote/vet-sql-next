@@ -17,6 +17,7 @@ import Image from "next/image";
 import { appointmentDetails, petDetails, vetsResponse } from "../database";
 import AddAppointmentBtnForm from "./AddAppointmentBtnForm";
 import RemoveAppointment from "./RemoveAppointment";
+import { Badge } from "./ui/badge";
 
 interface PropsAppointmentsInfo {
   appointment_details: appointmentDetails[] | null;
@@ -99,15 +100,26 @@ export default function AppointmentsInfo({
       <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
       {appointment_details.map((d) => {
         if (new Date(d.appointment_date) < new Date()) return;
-        const formatDate = new Intl.DateTimeFormat("es-ES", {
+        // Eliminar microsegundos de la fecha si están presentes
+        const appointmentDate = d.appointment_date.split(".")[0];
+        console.log(appointmentDate);
+        // const formatDate = new Intl.DateTimeFormat("es-ES", {
+        //   year: "numeric",
+        //   month: "long",
+        //   day: "numeric",
+        //   hour: "numeric",
+        //   minute: "numeric",
+        //   second: "numeric",
+        //   hour12: true,
+        // }).format(new Date(appointmentDate));
+        const formatDate = new Date(appointmentDate).toLocaleString("es-ES", {
           year: "numeric",
           month: "long",
           day: "numeric",
           hour: "numeric",
           minute: "numeric",
-          second: "numeric",
-          hour12: true,
-        }).format(new Date(d.appointment_date));
+          hourCycle: "h12",
+        });
         const [vetImg, petImg] = srcs.filter((el) => {
           return (
             el.src.includes(d.vet_pro_name.toLowerCase()) ||
@@ -129,12 +141,13 @@ export default function AppointmentsInfo({
               </div>
               <div className="flex flex-wrap items-center justify-center gap-2 max-md:order-3 max-md:col-span-2">
                 {appointmentDescription[d.vet_pro_type].map((el) => (
-                  <span
+                  <Badge
                     key={el}
-                    className="rounded bg-primary px-1 py-2 text-sm font-bold tracking-wide text-primary-800 dark:bg-primary-500 dark:text-primary-950"
+                    variant="secondary"
+                    className="bg-primary text-sm font-bold tracking-wide text-primary-800 dark:bg-primary-500 dark:text-primary-950"
                   >
                     {el}
-                  </span>
+                  </Badge>
                 ))}
               </div>
               <div className="gap 2 flex flex-col items-center justify-center">
