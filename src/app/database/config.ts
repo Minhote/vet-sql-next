@@ -6,19 +6,15 @@ const PORT = process.env.MYSQLPORT ? parseInt(process.env.MYSQLPORT) : 3306;
 const PASSWORD = process.env.MYSQLPASSWORD || "barcelo1994";
 const DATABASE = process.env.MYSQLDATABASE || "mydb";
 const URL =
-  `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.RAILWAY_TCP_PROXY_DOMAIN}:${process.env.RAILWAY_TCP_PROXY_PORT}/${process.env.MYSQL_DATABASE}
+  `mysql://${process.env.MYSQLUSER}:${process.env.MYSQLPASSWORD}@${process.env.MYSQLHOST}:${process.env.MYSQLPORT}/${process.env.MYSQLDATABASE}
 ` || null;
 
-const URL2 = "mysql://root:@roundhouse.proxy.rlwy.net:14553/railway";
-
-// export const connection = URL
-//   ? await createConnection(URL)
-//   : await createConnection({
-//       host: HOST,
-//       user: USER,
-//       port: PORT,
-//       password: PASSWORD,
-//       database: DATABASE,
-//     });
-
-export const connection = await createConnection(URL2);
+export const connection = URL
+  ? await createConnection(URL)
+  : await createConnection({
+      host: HOST,
+      user: USER,
+      port: PORT,
+      password: PASSWORD,
+      database: DATABASE,
+    });
