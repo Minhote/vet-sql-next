@@ -1,7 +1,7 @@
 "use client";
 
 import { ExitIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -15,7 +15,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "@/ui/alert-dialog";
 
 export default function LogoutBtn() {
   const router = useRouter();
@@ -67,17 +67,4 @@ export default function LogoutBtn() {
       </AlertDialogContent>
     </AlertDialog>
   );
-  // return (
-  //   <form
-  //     action={async () => {
-  //       "use server";
-  //       await logout();
-  //       redirect("/");
-  //     }}
-  //   >
-  //     <Button variant="outline" type="submit" size="icon">
-  //       <ExitIcon className="h-4 w-4" />
-  //     </Button>
-  //   </form>
-  // );
 }

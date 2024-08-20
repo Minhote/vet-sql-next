@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import "../globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "My Vet App",
 };
 
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@/ui/sonner";
 import { getSession } from "@/lib/user_utils";
 import { redirect } from "next/navigation";
 

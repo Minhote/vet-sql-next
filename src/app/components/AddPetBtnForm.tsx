@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogDescription,
   DialogFooter,
-} from "@/components/ui/dialog";
+} from "@/ui/dialog";
 import {
   Form,
   FormControl,
@@ -17,23 +17,23 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/ui/form";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { useForm } from "react-hook-form";
 import { formPetSchema, petSchema } from "@/lib/form_utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/ui/input";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@/ui/select";
 import { useState } from "react";
 
 export default function AddPetBtnForm() {

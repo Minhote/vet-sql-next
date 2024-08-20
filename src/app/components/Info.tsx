@@ -5,22 +5,22 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "./ui/card";
+} from "@/ui/card";
 
 export default function Info() {
   return (
     <>
-      <div className="flex flex-col flex-wrap justify-around items-center self-stretch">
+      <div className="flex flex-col flex-wrap items-center justify-around self-stretch">
         <h2 className="title">Information</h2>
-        <div className="flex flex-wrap justify-around items-center w-4/5 my-10 gap-5">
-          <Card className="flex-initial w-40">
+        <div className="my-10 flex w-4/5 flex-wrap items-center justify-around gap-5">
+          <Card className="w-40 flex-initial">
             <CardHeader>
               <CardTitle>Stylist</CardTitle>
-              <CardDescription className="flex-1 h-7">
+              <CardDescription className="h-7 flex-1">
                 Coat care for all breeds
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 h-16">
+            <CardContent className="h-16 flex-1">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -36,19 +36,19 @@ export default function Info() {
               </svg>
             </CardContent>
             <CardFooter className="h-14 flex-auto">
-              <p className="font-body text-txt text-base font-bold dark:text-background">
+              <p className="font-body text-base font-bold text-txt dark:text-background">
                 We have highly skilled stylists
               </p>
             </CardFooter>
           </Card>
-          <Card className="flex-initial w-40">
+          <Card className="w-40 flex-initial">
             <CardHeader>
               <CardTitle>Bathing</CardTitle>
-              <CardDescription className="flex-1 h-7">
+              <CardDescription className="h-7 flex-1">
                 Skin and coat cleaning
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 h-16">
+            <CardContent className="h-16 flex-1">
               <svg
                 className="size-12 fill-txt"
                 viewBox="0 0 475.56 475.56"
@@ -113,19 +113,19 @@ export default function Info() {
               </svg>
             </CardContent>
             <CardFooter className="h-14 flex-auto">
-              <p className="font-body text-txt text-base font-bold dark:text-background">
+              <p className="font-body text-base font-bold text-txt dark:text-background">
                 Your pet clean and free of parasits
               </p>
             </CardFooter>
           </Card>
-          <Card className="flex-initial w-40">
+          <Card className="w-40 flex-initial">
             <CardHeader>
               <CardTitle>Pet Care</CardTitle>
-              <CardDescription className="flex-1 h-7">
+              <CardDescription className="h-7 flex-1">
                 Health care and treatment
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 h-16">
+            <CardContent className="h-16 flex-1">
               <svg
                 viewBox="-2.5 0 19 19"
                 xmlns="http://www.w3.org/2000/svg"
@@ -135,19 +135,19 @@ export default function Info() {
               </svg>
             </CardContent>
             <CardFooter className="h-14 flex-auto">
-              <p className="font-body text-txt text-base font-bold dark:text-background">
+              <p className="font-body text-base font-bold text-txt dark:text-background">
                 Best vets at your disposal
               </p>
             </CardFooter>
           </Card>
-          <Card className="flex-initial w-40">
+          <Card className="w-40 flex-initial">
             <CardHeader>
               <CardTitle>Surgery</CardTitle>
-              <CardDescription className="flex-1 h-7">
+              <CardDescription className="h-7 flex-1">
                 For emergency and others
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 h-16">
+            <CardContent className="h-16 flex-1">
               <svg className="size-12 fill-txt" viewBox="0 0 490.075 490.075">
                 <g>
                   <g>
@@ -160,24 +160,24 @@ export default function Info() {
               </svg>
             </CardContent>
             <CardFooter className="h-14 flex-auto">
-              <p className="font-body text-txt text-base font-bold dark:text-background">
+              <p className="font-body text-base font-bold text-txt dark:text-background">
                 High-end equipment for best results
               </p>
             </CardFooter>
           </Card>
-          <Card className="flex-initial w-40">
+          <Card className="w-40 flex-initial">
             <CardHeader>
               <CardTitle>Consulting</CardTitle>
-              <CardDescription className="flex-1 h-7">
+              <CardDescription className="h-7 flex-1">
                 Training for owner and pets
               </CardDescription>
             </CardHeader>
-            <CardContent className="flex-1 h-16">
+            <CardContent className="h-16 flex-1">
               <svg viewBox="0 0 64 64" className="size-12 fill-txt">
                 <title>Dog</title>
                 <g transform="translate(1.000000, 6.000000)">
                   <path
-                    className="stroke-txt fill-none"
+                    className="fill-none stroke-txt"
                     strokeWidth="2"
                     strokeLinejoin="round"
                     d="M34.7,42c-2.8,0-6.4,4.9-6.4,8h-5.2
@@ -201,7 +201,7 @@ export default function Info() {
               </svg>
             </CardContent>
             <CardFooter className="h-14 flex-auto">
-              <p className="font-body text-txt text-base font-bold dark:text-background">
+              <p className="font-body text-base font-bold text-txt dark:text-background">
                 Better wellness for your pet
               </p>
             </CardFooter>

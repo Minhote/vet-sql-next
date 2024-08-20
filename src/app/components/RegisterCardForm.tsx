@@ -3,7 +3,7 @@
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/ui/button";
 import {
   Form,
   FormControl,
@@ -12,8 +12,8 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@/ui/form";
+import { Input } from "@/ui/input";
 import { toast } from "sonner";
 import {
   formSchema,
@@ -21,7 +21,7 @@ import {
   loginSchema,
   submitSchema,
 } from "@/lib/form_utils";
-import { RegisterCardProps } from "../database";
+import { RegisterCardProps } from "@/app/database";
 import { useRouter } from "next/navigation";
 
 const RegisterCardForm = ({ type }: RegisterCardProps) => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { Switch } from "./ui/switch";
+import { Switch } from "@/ui/switch";
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "../components/ui/card";
-import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
-import { Label } from "./ui/label";
+} from "@/ui/card";
+import { RadioGroup, RadioGroupItem } from "@/ui/radio-group";
+import { Label } from "@/ui/label";
 import { useState, useRef } from "react";
 
 export default function Pricing() {
@@ -49,13 +49,13 @@ export default function Pricing() {
             Interact to see the price depending on the quantity of services
           </CardDescription>
         </CardHeader>
-        <CardContent className="flex gap-2 flex-col items-stretch my-4">
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
-            <p className="text-xl text-txt font-normal">Consult</p>
+        <CardContent className="my-4 flex flex-col items-stretch gap-2">
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
+            <p className="text-xl font-normal text-txt">Consult</p>
             <Switch checked disabled />
           </div>
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
-            <p className="text-xl text-txt font-normal">Shower</p>
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
+            <p className="text-xl font-normal text-txt">Shower</p>
             <Switch
               onCheckedChange={(e) => {
                 if (e) {
@@ -66,8 +66,8 @@ export default function Pricing() {
               }}
             />
           </div>
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
-            <p className="text-xl text-txt font-normal">Deworming</p>
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
+            <p className="text-xl font-normal text-txt">Deworming</p>
             <Switch
               onCheckedChange={(e) => {
                 if (e) {
@@ -78,8 +78,8 @@ export default function Pricing() {
               }}
             />
           </div>
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
-            <p className="text-xl text-txt font-normal">Styling services</p>
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
+            <p className="text-xl font-normal text-txt">Styling services</p>
             <Switch
               onCheckedChange={(e) => {
                 if (e) {
@@ -90,9 +90,9 @@ export default function Pricing() {
               }}
             />
           </div>
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
             <div className="basis-1/2">
-              <p className="text-xl text-txt font-normal">
+              <p className="text-xl font-normal text-txt">
                 Training consultancy
               </p>
               <p className="text-base font-normal text-background">
@@ -108,7 +108,7 @@ export default function Pricing() {
                   case "none":
                     setTotalValue(
                       (v) =>
-                        v - valuesOfServices.training[trainingValue.current]
+                        v - valuesOfServices.training[trainingValue.current],
                     );
                     trainingValue.current = "none";
                     break;
@@ -117,7 +117,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.training[trainingValue.current] +
-                        valuesOfServices.training.dog
+                        valuesOfServices.training.dog,
                     );
                     trainingValue.current = "dog";
                     break;
@@ -126,7 +126,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.training[trainingValue.current] +
-                        valuesOfServices.training.cat
+                        valuesOfServices.training.cat,
                     );
                     trainingValue.current = "cat";
                     break;
@@ -135,7 +135,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.training[trainingValue.current] +
-                        valuesOfServices.training.equine
+                        valuesOfServices.training.equine,
                     );
                     trainingValue.current = "equine";
                     break;
@@ -160,9 +160,9 @@ export default function Pricing() {
               </div>
             </RadioGroup>
           </div>
-          <div className="border border-txt p-2 rounded flex items-center grow justify-between">
+          <div className="flex grow items-center justify-between rounded border border-txt p-2">
             <div className="basis-1/2">
-              <p className="text-xl text-txt font-normal">Surgery</p>
+              <p className="text-xl font-normal text-txt">Surgery</p>
               <p className="text-base font-normal text-background">
                 Depends on type
               </p>
@@ -175,7 +175,7 @@ export default function Pricing() {
                 switch (e) {
                   case "none":
                     setTotalValue(
-                      (v) => v - valuesOfServices.surgery[surgeryValue.current]
+                      (v) => v - valuesOfServices.surgery[surgeryValue.current],
                     );
                     surgeryValue.current = "none";
                     break;
@@ -184,7 +184,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.surgery[surgeryValue.current] +
-                        valuesOfServices.surgery.general
+                        valuesOfServices.surgery.general,
                     );
                     surgeryValue.current = "general";
                     break;
@@ -193,7 +193,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.surgery[surgeryValue.current] +
-                        valuesOfServices.surgery.ortopedic
+                        valuesOfServices.surgery.ortopedic,
                     );
                     surgeryValue.current = "ortopedic";
                     break;
@@ -202,7 +202,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.surgery[surgeryValue.current] +
-                        valuesOfServices.surgery["soft-tissue"]
+                        valuesOfServices.surgery["soft-tissue"],
                     );
                     surgeryValue.current = "soft-tissue";
                     break;
@@ -211,7 +211,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.surgery[surgeryValue.current] +
-                        valuesOfServices.surgery.dental
+                        valuesOfServices.surgery.dental,
                     );
                     surgeryValue.current = "dental";
                     break;
@@ -220,7 +220,7 @@ export default function Pricing() {
                       (v) =>
                         v -
                         valuesOfServices.surgery[surgeryValue.current] +
-                        valuesOfServices.surgery.emergency
+                        valuesOfServices.surgery.emergency,
                     );
                     surgeryValue.current = "emergency";
                     break;
@@ -255,8 +255,8 @@ export default function Pricing() {
           </div>
         </CardContent>
         <CardFooter className="flex items-center justify-between">
-          <p className="text-txt font-bold text-2xl">Total</p>
-          <p className="text-accent-900 text-3xl font-bold">
+          <p className="text-2xl font-bold text-txt">Total</p>
+          <p className="text-3xl font-bold text-accent-900">
             {`$ ${totalValue.toString()}`}
           </p>
         </CardFooter>

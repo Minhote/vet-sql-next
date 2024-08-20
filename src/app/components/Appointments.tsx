@@ -1,23 +1,23 @@
-import carla from "@/app/assets/carla.jpg";
-import fabrizio from "@/app/assets/fabrizio.jpg";
-import francis from "@/app/assets/francis.jpg";
-import franco from "@/app/assets/franco.jpg";
-import hector from "@/app/assets/hector.jpg";
-import juan from "@/app/assets/juan.jpg";
-import raquel from "@/app/assets/raquel.jpg";
-import marina from "@/app/assets/marina.jpg";
-import otro from "@/app/assets/otro.svg";
-import ave from "@/app/assets/ave.svg";
-import equino from "@/app/assets/equino.svg";
-import gato from "@/app/assets/gato.svg";
-import perro from "@/app/assets/perro.svg";
-import addApointment from "@/app/assets/addAppointment.svg";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import carla from "@/assets/carla.jpg";
+import fabrizio from "@/assets/fabrizio.jpg";
+import francis from "@/assets/francis.jpg";
+import franco from "@/assets/franco.jpg";
+import hector from "@/assets/hector.jpg";
+import juan from "@/assets/juan.jpg";
+import raquel from "@/assets/raquel.jpg";
+import marina from "@/assets/marina.jpg";
+import otro from "@/assets/otro.svg";
+import ave from "@/assets/ave.svg";
+import equino from "@/assets/equino.svg";
+import gato from "@/assets/gato.svg";
+import perro from "@/assets/perro.svg";
+import addApointment from "@/assets/addAppointment.svg";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
 import Image from "next/image";
-import { appointmentDetails, petDetails, vetsResponse } from "../database";
-import AddAppointmentBtnForm from "./AddAppointmentBtnForm";
-import RemoveAppointment from "./RemoveAppointment";
-import { Badge } from "./ui/badge";
+import { appointmentDetails, petDetails, vetsResponse } from "@/app/database";
+import AddAppointmentBtnForm from "@/components/AddAppointmentBtnForm";
+import RemoveAppointment from "@/components/RemoveAppointment";
+import { Badge } from "@/ui/badge";
 
 interface PropsAppointmentsInfo {
   appointment_details: appointmentDetails[] | null;
@@ -100,18 +100,9 @@ export default function AppointmentsInfo({
       <AddAppointmentBtnForm pet_details={pet_details} vetsData={vetsData} />
       {appointment_details.map((d) => {
         if (new Date(d.appointment_date) < new Date()) return;
-        // Eliminar microsegundos de la fecha si están presentes
+        // Eliminar microsegundos de la fecha
         const appointmentDate = d.appointment_date.split(".")[0];
-        console.log(appointmentDate);
-        // const formatDate = new Intl.DateTimeFormat("es-ES", {
-        //   year: "numeric",
-        //   month: "long",
-        //   day: "numeric",
-        //   hour: "numeric",
-        //   minute: "numeric",
-        //   second: "numeric",
-        //   hour12: true,
-        // }).format(new Date(appointmentDate));
+
         const formatDate = new Date(appointmentDate).toLocaleString("es-ES", {
           year: "numeric",
           month: "long",

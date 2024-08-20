@@ -35,13 +35,13 @@ export async function register(formData: RegisterFormData) {
   const { id, password, username } = formData;
   const hashedPassword = await hashingPassword(password);
   const [data] = await connection.execute<UserData[]>(
-    `SELECT * FROM mydb.customer WHERE id = ? `,
+    `SELECT * FROM customer WHERE id = ? `,
     [id],
   );
 
   if (data.length === 0) {
     await connection.query<UserData[]>(
-      `INSERT INTO mydb.customer (name, id, password)
+      `INSERT INTO customer (name, id, password)
     VALUES (?,?,?)`,
       [username, id, hashedPassword],
     );
@@ -54,7 +54,7 @@ export async function register(formData: RegisterFormData) {
 export async function login(formData: loginData) {
   const { password, username } = formData;
   const [user] = await connection.execute<UserData[]>(
-    `SELECT * FROM mydb.customer WHERE name = ?`,
+    `SELECT * FROM customer WHERE name = ?`,
     [username],
   );
 
@@ -105,8 +105,8 @@ export async function getInformationById(id: string) {
                     'pet_id', p.id
                 )
             )
-        FROM mydb.pet_details AS p
-        INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
+        FROM pet_details AS p
+        INNER JOIN pet_type AS pt ON p.pet_type_id = pt.id
         WHERE p.customer_id = c.id
     ) AS pet_details,
     (
@@ -114,7 +114,7 @@ export async function getInformationById(id: string) {
             CASE
                 WHEN EXISTS (
                     SELECT 1
-                    FROM mydb.appointment AS a
+                    FROM appointment AS a
                     WHERE a.customer_id = c.id
                 ) THEN
                     JSON_ARRAYAGG(
@@ -130,22 +130,22 @@ export async function getInformationById(id: string) {
                     )
                 ELSE NULL
             END
-        FROM mydb.appointment AS a
-        INNER JOIN mydb.pet_details AS p ON a.pet_details_id = p.id
-        INNER JOIN mydb.pet_type AS pt ON p.pet_type_id = pt.id
-        LEFT JOIN mydb.vet_pro AS vp ON a.vet_pro_id = vp.id
-        LEFT JOIN mydb.pro_type AS vpt ON vp.pro_type_id = vpt.id
+        FROM appointment AS a
+        INNER JOIN pet_details AS p ON a.pet_details_id = p.id
+        INNER JOIN pet_type AS pt ON p.pet_type_id = pt.id
+        LEFT JOIN vet_pro AS vp ON a.vet_pro_id = vp.id
+        LEFT JOIN pro_type AS vpt ON vp.pro_type_id = vpt.id
         WHERE a.customer_id = c.id
     ) AS appointment_details
-FROM mydb.customer AS c
+FROM customer AS c
 WHERE c.id = ?`,
       [id],
     );
     const [vetsData] = await connection.execute<vetsResponse[]>(`
       SELECT 
         v.name AS vet_name, pt.title AS vet_pro_type 
-        FROM mydb.vet_pro AS v 
-        INNER JOIN mydb.pro_type pt 
+        FROM vet_pro AS v 
+        INNER JOIN pro_type pt 
         ON v.pro_type_id = pt.id`);
 
     return { customerData: customerData[0], vetsData };
@@ -159,12 +159,12 @@ export async function addPet(values: addPetProps) {
   const { pet_age, pet_name, pet_type, id } = values;
   try {
     const [pet_type_id] = await connection.execute<idResponse[]>(
-      `SELECT id from mydb.pet_type WHERE type = ?`,
+      `SELECT id from pet_type WHERE type = ?`,
       [pet_type],
     );
     const { id: pet_id } = pet_type_id[0];
     const [result] = await connection.execute(
-      `INSERT INTO mydb.pet_details(name, age, pet_type_id, customer_id) VALUES(?,?,?,?)`,
+      `INSERT INTO pet_details(name, age, pet_type_id, customer_id) VALUES(?,?,?,?)`,
       [pet_name, pet_age, pet_id, id],
     );
     if (!result) return false;
@@ -178,11 +178,11 @@ export async function addPet(values: addPetProps) {
 export async function deletePet(pet_id: number) {
   try {
     await connection.execute(
-      `DELETE FROM mydb.appointment WHERE pet_details_id = ?`,
+      `DELETE FROM appointment WHERE pet_details_id = ?`,
       [pet_id],
     );
     const [resultPet] = await connection.execute(
-      `DELETE FROM mydb.pet_details WHERE id = ?`,
+      `DELETE FROM pet_details WHERE id = ?`,
       [pet_id],
     );
     if (resultPet) return true;
@@ -195,7 +195,7 @@ export async function deletePet(pet_id: number) {
 export async function deleteAppointment(appointment_id: number) {
   try {
     const [resultAppointment] = await connection.execute(
-      `DELETE FROM mydb.appointment WHERE id = ?`,
+      `DELETE FROM appointment WHERE id = ?`,
       [appointment_id],
     );
     if (resultAppointment) return true;
@@ -213,9 +213,9 @@ export async function addAppointment(values: addAppointmentProps) {
     vet_pro.id AS vet_id, 
     pet_details.id AS pet_id 
   FROM 
-    mydb.vet_pro
+    vet_pro
   INNER JOIN 
-    mydb.pet_details 
+    pet_details 
   WHERE 
     vet_pro.name = ? AND 
     pet_details.name = ?
@@ -224,7 +224,7 @@ export async function addAppointment(values: addAppointmentProps) {
     );
     const { vet_id, pet_id } = results[0];
     const [insertedAppointment] = await connection.execute(
-      `INSERT INTO mydb.appointment (date,customer_id,vet_pro_id,pet_details_id) VALUES (?,?,?,?)`,
+      `INSERT INTO appointment (date,customer_id,vet_pro_id,pet_details_id) VALUES (?,?,?,?)`,
       [appointment_date, id, vet_id, pet_id],
     );
     if (insertedAppointment) return true;
@@ -239,7 +239,7 @@ export async function getAppointmentsOptions() {
     const [vets] = await connection.execute<
       vetsResponse[]
     >(`SELECT name AS vet_pro_name, title AS vet_pro_type 
-    FROM mydb.vet_pro AS vp INNER JOIN mydb.pro_type AS vpt 
+    FROM vet_pro AS vp INNER JOIN pro_type AS vpt 
     ON vp.pro_type_id = vpt.id`);
     return vets;
   } catch (error) {

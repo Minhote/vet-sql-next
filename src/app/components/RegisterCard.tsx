@@ -1,5 +1,5 @@
-import RegisterCardForm from "./RegisterCardForm";
-import { RegisterCardProps } from "../database";
+import RegisterCardForm from "@/components/RegisterCardForm";
+import { RegisterCardProps } from "@/app/database";
 
 export default function RegisterCard({ type }: RegisterCardProps) {
   return (

@@ -2,19 +2,17 @@
 
 import {
   Sheet,
-  SheetClose,
   SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
+} from "@/ui/sheet";
+import { Button } from "@/ui/button";
 import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { Label } from "./ui/label";
-import { Input } from "./ui/input";
-import { petDetails, vetsResponse } from "../database";
+import { Input } from "@/ui/input";
+import { petDetails, vetsResponse } from "@/app/database";
 import { useRouter } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
 import { appointmentSchema, formAppointmentSchema } from "@/lib/form_utils";
@@ -28,21 +26,17 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@/ui/form";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectValue,
   SelectTrigger,
-} from "@/components/ui/select";
-import {
-  Popover,
-  PopoverTrigger,
-  PopoverContent,
-} from "@/components/ui/popover";
+} from "@/ui/select";
+import { Popover, PopoverTrigger, PopoverContent } from "@/ui/popover";
 import { CalendarIcon } from "@radix-ui/react-icons";
-import { Calendar } from "@/components/ui/calendar";
+import { Calendar } from "@/ui/calendar";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";

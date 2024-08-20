@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { toggleHamburger } from "../../lib/utils";
-import { ModeToggle } from "./ui/toggle";
+import { toggleHamburger } from "@/lib/utils";
+import { ModeToggle } from "@/ui/toggle";
 
 export default function Header() {
   return (

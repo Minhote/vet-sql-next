@@ -1,6 +1,6 @@
 import Image from "next/image";
-import img9 from "@/app/assets/img-9.jpg";
-import img10 from "@/app/assets/img-10.jpg";
+import img9 from "@/assets/img-9.jpg";
+import img10 from "@/assets/img-10.jpg";
 
 export default function AboutPage() {
   return (

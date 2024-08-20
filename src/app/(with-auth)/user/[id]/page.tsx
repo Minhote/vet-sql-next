@@ -1,10 +1,10 @@
 import { getInformationById } from "@/lib/user_utils";
 import { redirect } from "next/navigation";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import PetInfo from "@/app/components/PetInfo";
-import VetsInfo from "@/app/components/VetsInfo";
-import AppointmentsInfo from "@/app/components/Appointments";
-import LogoutBtn from "@/app/components/LogoutBtn";
+import { Avatar, AvatarImage, AvatarFallback } from "@/ui/avatar";
+import PetInfo from "@/components/PetInfo";
+import VetsInfo from "@/components/VetsInfo";
+import AppointmentsInfo from "@/components/Appointments";
+import LogoutBtn from "@/components/LogoutBtn";
 
 export default async function IdPage({
   params: { id },

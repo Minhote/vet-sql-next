@@ -1,4 +1,4 @@
-import RegisterCard from "../../components/RegisterCard";
+import RegisterCard from "@/components/RegisterCard";
 
 export default async function UserPage() {
   return (

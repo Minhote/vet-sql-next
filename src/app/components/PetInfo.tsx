@@ -1,14 +1,14 @@
 import Image from "next/image";
-import otro from "@/app/assets/otro.svg";
-import ave from "@/app/assets/ave.svg";
-import equino from "@/app/assets/equino.svg";
-import gato from "@/app/assets/gato.svg";
-import perro from "@/app/assets/perro.svg";
+import otro from "@/assets/otro.svg";
+import ave from "@/assets/ave.svg";
+import equino from "@/assets/equino.svg";
+import gato from "@/assets/gato.svg";
+import perro from "@/assets/perro.svg";
 import RemovePet from "@/components/RemovePet";
 import AddPetBtnForm from "@/components/AddPetBtnForm";
-import { petDetails } from "../database";
-import addPet from "@/app/assets/addPet.svg";
-import { Badge } from "./ui/badge";
+import { petDetails } from "@/app/database";
+import addPet from "@/assets/addPet.svg";
+import { Badge } from "@/ui/badge";
 
 interface PropsPetInfo {
   pet_details: petDetails[] | null;

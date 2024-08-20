@@ -1,14 +1,14 @@
-import { vetsResponse } from "../database";
-import carla from "@/app/assets/carla.jpg";
-import fabrizio from "@/app/assets/fabrizio.jpg";
-import francis from "@/app/assets/francis.jpg";
-import franco from "@/app/assets/franco.jpg";
-import hector from "@/app/assets/hector.jpg";
-import juan from "@/app/assets/juan.jpg";
-import raquel from "@/app/assets/raquel.jpg";
-import marina from "@/app/assets/marina.jpg";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import { Badge } from "./ui/badge";
+import { vetsResponse } from "@/app/database";
+import carla from "@/assets/carla.jpg";
+import fabrizio from "@/assets/fabrizio.jpg";
+import francis from "@/assets/francis.jpg";
+import franco from "@/assets/franco.jpg";
+import hector from "@/assets/hector.jpg";
+import juan from "@/assets/juan.jpg";
+import raquel from "@/assets/raquel.jpg";
+import marina from "@/assets/marina.jpg";
+import { Avatar, AvatarFallback, AvatarImage } from "@/ui/avatar";
+import { Badge } from "@/ui/badge";
 
 interface PropsVetsInfo {
   vetsData: vetsResponse[];
