@@ -12,6 +12,7 @@ export default async function IdPage({
   params: { id: string };
 }) {
   const info = await getInformationById(id);
+  console.log(`Log de user id page: ${info}`);
 
   if (!info) redirect("/");
   const {

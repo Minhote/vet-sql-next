@@ -64,6 +64,7 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
     });
     const status = resp.status;
     const data = await resp.json();
+    console.log(`Log en la FN de Login: ${data}, ${status}`);
     if (status === 200) {
       toast.info(`${data.message}`);
       loginform.reset();
