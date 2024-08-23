@@ -5,6 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const formData = await req.json();
     const resp = await register(formData);
+    console.log(`Log de Create Post Route: ${resp}`);
     if (resp)
       return NextResponse.json(
         { message: "Usuario Creado y Registrado" },

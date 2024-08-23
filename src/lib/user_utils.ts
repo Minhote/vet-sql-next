@@ -38,7 +38,7 @@ export async function register(formData: RegisterFormData) {
     `SELECT * FROM customer WHERE id = ? `,
     [id],
   );
-
+  console.log(`Log de register fn: ${data}`);
   if (data.length === 0) {
     await connection.query<UserData[]>(
       `INSERT INTO customer (name, id, password)

@@ -45,12 +45,14 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
       method: "POST",
       body: JSON.stringify(values),
     });
-    const status = resp.statusText;
+
+    const status = resp.status;
     const data = await resp.json();
-    if (status === "Created") {
+    console.log(`Log de onSubmit FN front: ${JSON.stringify(data)}, ${status}`);
+    if (status === 201) {
       toast.info(`${data.message}`);
       submitform.reset();
-    } else if (status === "Conflict") {
+    } else if (status === 409) {
       toast.error(`${data.message}`);
     }
   }
@@ -60,9 +62,9 @@ const RegisterCardForm = ({ type }: RegisterCardProps) => {
       method: "POST",
       body: JSON.stringify(values),
     });
-    const status = resp.statusText;
+    const status = resp.status;
     const data = await resp.json();
-    if (status === "OK") {
+    if (status === 200) {
       toast.info(`${data.message}`);
       loginform.reset();
       router.push(`/user/${data.user.id}`);
