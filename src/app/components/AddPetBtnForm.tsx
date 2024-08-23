@@ -51,9 +51,9 @@ export default function AddPetBtnForm() {
       method: "POST",
       body: JSON.stringify(values),
     });
-    const status = resp.statusText;
+    const status = resp.status;
     const data = await resp.json();
-    if (status === "OK") {
+    if (status === 200) {
       toast.success(`${data.message}`);
       form.reset();
       setDisabled(false);
